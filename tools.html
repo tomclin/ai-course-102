@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+<title>交辦檢查點工具表 · 放手交給 AI</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    color-scheme: light dark;
+    --paper:#F7F6F2;
+    --surface:#FFFFFF;
+    --ink:#17263B;
+    --muted:#3D4A5C;
+    --faint:#677180;
+    --teal:#2E7D6B;
+    --seal:#B5432E;
+    --hair:#D9D6CE;
+    --on-accent:#FDFBF7;
+    --wash:#EDF3F1;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --paper:#14181F;
+      --surface:#1C222B;
+      --ink:#E8E5DE;
+      --muted:#B4BCC7;
+      --faint:#87919D;
+      --teal:#4FA893;
+      --seal:#D4664F;
+      --hair:#2A3038;
+      --on-accent:#16100E;
+      --wash:#1A2420;
+    }
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{background:var(--paper);}
+  body{
+    color:var(--ink);
+    font-family:'Noto Sans TC',sans-serif;
+    font-size:16px;line-height:1.55;
+    padding:26px 20px 32px;
+  }
+  .sheet{max-width:900px;margin:0 auto;}
+
+  header{border-bottom:3px double var(--ink);padding-bottom:12px;margin-bottom:14px;}
+  h1{font-family:'Noto Sans TC',sans-serif;font-weight:900;font-size:28px;line-height:1.3;}
+  .sub{color:var(--muted);font-size:15px;margin-top:4px;}
+  .sub strong{color:var(--teal);}
+
+  h2{
+    font-family:'Noto Sans TC',sans-serif;font-weight:900;font-size:18px;
+    margin:14px 0 8px;color:var(--ink);
+  }
+  h2 .tag{color:var(--teal);}
+
+  .formrow{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;}
+  .cell{
+    background:var(--surface);border:1px solid var(--hair);border-top:3px solid var(--teal);
+    border-radius:0 0 6px 6px;padding:8px 9px;
+  }
+  .cell .lbl{
+    display:block;font-family:'Noto Sans TC',sans-serif;font-weight:700;
+    font-size:15px;color:var(--teal);margin-bottom:2px;
+  }
+  .cell .hint{font-size:13px;color:var(--muted);line-height:1.5;}
+
+  .cp3{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;}
+  .cp{
+    background:var(--wash);border-radius:6px;padding:8px 10px;
+  }
+  .cp b{display:block;font-size:15px;color:var(--ink);font-weight:700;}
+  .cp b small{font-family:'Noto Sans TC',sans-serif;font-weight:500;font-size:13px;color:var(--teal);}
+  .cp span{font-size:13px;color:var(--muted);line-height:1.5;display:block;margin-top:2px;}
+
+  .redline{
+    margin-top:10px;background:var(--surface);border:2px solid var(--seal);
+    border-radius:8px;padding:9px 14px;font-size:15px;color:var(--muted);
+  }
+  .redline b{color:var(--seal);font-weight:900;}
+
+  table{width:100%;border-collapse:collapse;}
+  th{
+    font-family:'Noto Sans TC',sans-serif;font-size:15px;text-align:left;
+    color:var(--teal);border-bottom:2px solid var(--teal);
+    padding:7px 9px;vertical-align:bottom;
+  }
+  td{
+    border-bottom:1px solid var(--hair);
+    padding:9px 9px;vertical-align:top;
+    font-size:15px;color:var(--muted);
+  }
+  td.tool{
+    font-family:'Noto Sans TC',sans-serif;font-weight:700;font-size:16px;
+    color:var(--ink);white-space:nowrap;
+  }
+  td.tool small{display:block;font-family:'Noto Sans TC',sans-serif;font-weight:400;font-size:13px;color:var(--faint);white-space:normal;}
+  td b{color:var(--ink);}
+  .path{color:var(--seal);font-weight:500;}
+  .note{color:var(--faint);font-size:13px;}
+
+  .fallback{
+    margin-top:12px;background:var(--wash);border-left:4px solid var(--seal);
+    border-radius:0 8px 8px 0;padding:10px 16px;font-size:15px;
+  }
+  .fallback b{color:var(--seal);}
+
+  .tips{margin-top:10px;font-size:13px;color:var(--muted);}
+  .tips li{margin-left:1.4em;margin-top:3px;}
+
+  footer{
+    margin-top:12px;font-size:13px;color:var(--faint);
+    display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
+    border-top:1px solid var(--hair);padding-top:10px;
+  }
+
+  @media (max-width:640px){
+    .formrow{grid-template-columns:1fr 1fr;}
+    .cp3{grid-template-columns:1fr;}
+    table,thead,tbody,tr{display:block;}
+    thead{display:none;}
+    td{display:block;border-bottom:none;padding:4px 10px;}
+    td::before{content:attr(data-h);display:block;font-size:13px;color:var(--teal);font-weight:700;letter-spacing:.1em;}
+    td.tool{background:var(--wash);border-radius:6px;margin-top:14px;padding:8px 10px;}
+    td.tool::before{content:none;}
+    tr{border-bottom:1px solid var(--hair);padding-bottom:8px;}
+  }
+  @media print{
+    :root{color-scheme:only light;}
+    body{padding:0;font-size:12.5px;line-height:1.45;}
+    h1{font-size:22px;}
+    .sub{font-size:13px;}
+    h2{font-size:14px;margin:8px 0 5px;}
+    .cell{padding:5px 7px;}
+    .cell .lbl{font-size:12.5px;}
+    .cell .hint{font-size:11px;}
+    .cp{padding:5px 8px;}
+    .cp b{font-size:12.5px;}
+    .cp span{font-size:11px;}
+    .redline{padding:6px 10px;font-size:12px;margin-top:7px;}
+    td{font-size:11.5px;padding:5px 6px;}
+    th{font-size:12px;padding:5px 6px;}
+    td.tool{font-size:13px;}
+    .fallback{padding:6px 12px;font-size:12px;margin-top:7px;}
+    .tips{font-size:10.5px;margin-top:6px;}
+    footer{margin-top:6px;font-size:10px;}
+    .sheet{max-width:none;}
+    @page{size:A4;margin:10mm 11mm;}
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <header>
+    <h1>交辦檢查點工具表——放手之前，先設好檢查點</h1>
+    <p class="sub"><strong>所有練習皆可在免費版完成</strong>。交出去的是工作，留在手上的是責任——這張表幫你把責任看好。</p>
+  </header>
+
+  <h2><span class="tag">一、</span>交辦五欄模板（照著填，貼進對話開頭）</h2>
+  <div class="formrow">
+    <div class="cell"><span class="lbl">① 目標</span><span class="hint">這件事要做成什麼？一句話說清楚。</span></div>
+    <div class="cell"><span class="lbl">② 先給我看計畫</span><span class="hint">「先列出你打算怎麼做，我核可了再動工。」</span></div>
+    <div class="cell"><span class="lbl">③ 檢查點</span><span class="hint">做完哪一步要停下來回報？寫清楚停在哪。</span></div>
+    <div class="cell"><span class="lbl">④ 成品格式</span><span class="hint">成品長什麼樣？表格、文件、清單、網頁……</span></div>
+    <div class="cell"><span class="lbl">⑤ 驗收標準</span><span class="hint">怎樣算合格？列出你會逐條檢查的條件。</span></div>
+  </div>
+
+  <h2><span class="tag">二、</span>三型檢查點速查</h2>
+  <div class="cp3">
+    <div class="cp"><b>計畫核可 <small>動工前</small></b><span>計畫看得懂、步驟合理，才放行。看不懂就叫它重寫，別急著點頭。</span></div>
+    <div class="cp"><b>中途抽查 <small>做到哪要停</small></b><span>指定「做完第幾步先停下來給我看」。看一眼沒問題，再放它繼續。</span></div>
+    <div class="cp"><b>交付驗收 <small>怎麼驗</small></b><span>對照第⑤欄逐條檢查，說得出哪裡過、哪裡不過，才算收貨。</span></div>
+  </div>
+
+  <div class="redline"><b>必停紅線：花錢、寄出、刪除、對外發佈</b>——碰到這四件事，一律停下來問過你才能動。可以叫 AI 先複誦一遍這條規則。</div>
+
+  <h2><span class="tag">三、</span>四工具對照——在你用的那一列，找到「先計畫、再執行」的做法</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>工具</th>
+        <th>怎麼要求它「先計畫、再逐步執行」</th>
+        <th>vibe coding 免費入口（做個小工具）</th>
+        <th>免費版注意事項</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="tool" data-h="工具">ChatGPT<small>chatgpt.com</small></td>
+        <td data-h="先計畫再執行">不用找開關——把交辦五欄貼在對話開頭就成立。同一類事會重複交辦？建一個<b>「專案」</b>（免費版可用），把五欄寫進專案指示。</td>
+        <td data-h="vibe coding 免費入口">用講的：「幫我做一個網頁小工具……」，程式碼直接出現在對話裡，旁邊有<span class="path">預覽</span>可以按。<span class="note">（舊的 Canvas 側欄 2026 年中已併回對話，介面常變動）</span></td>
+        <td data-h="免費版注意事項">訊息量有上限，用完改用較簡單的模型（數字常變動）。<b>排程任務需付費版</b>——今天的練習用不到。</td>
+      </tr>
+      <tr>
+        <td class="tool" data-h="工具">Gemini<small>gemini.google.com</small></td>
+        <td data-h="先計畫再執行">直接貼五欄。重複交辦可建免費的<b>「Gem」</b>，把五欄寫進 Gem 的指令，每次開它就自動生效。</td>
+        <td data-h="vibe coding 免費入口">輸入框點<span class="path">「Canvas」</span>再用講的，就能做出網頁、小工具、互動測驗（免費版可用）。</td>
+        <td data-h="免費版注意事項">每日用量有上限（數字常變動）。<b>「排定動作」（定時自動執行）需付費版</b>——練習用不到。</td>
+      </tr>
+      <tr>
+        <td class="tool" data-h="工具">Claude<small>claude.ai</small></td>
+        <td data-h="先計畫再執行">直接貼五欄。重複交辦可建<b>「Project（專案）」</b>放五欄（免費版最多 5 個）。</td>
+        <td data-h="vibe coding 免費入口">用講的即可，成品以<span class="path">「Artifact」</span>在旁邊視窗即時呈現、當場可以操作（免費版可用）。</td>
+        <td data-h="免費版注意事項">訊息量按每 5 小時計算，額度浮動（數字常變動）；介面多為英文。</td>
+      </tr>
+      <tr>
+        <td class="tool" data-h="工具">Copilot<small>copilot.microsoft.com</small></td>
+        <td data-h="先計畫再執行">直接貼五欄。沒有指令欄位——可補一句<b>「請記住：我交辦事情時，一律先給計畫、核可後再逐步執行」</b>。</td>
+        <td data-h="vibe coding 免費入口">沒有專屬預覽畫布——請它<b>「把完整程式碼放在同一個檔案」</b>，存成 .html 用瀏覽器打開就能看。<span class="note">（有訂閱 Microsoft 365 者另有 Pages 可即時預覽）</span></td>
+        <td data-h="免費版注意事項">尖峰時段可能變慢或改用較簡單的模型（數字常變動）。</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="fallback">
+    <b>通用備案：</b>工具沒有特殊功能？<b>交辦五欄直接打字貼上</b>——紀律在卡上，不在工具裡。
+  </div>
+
+  <ul class="tips">
+    <li>AI 會錯——<b>檢查點不是不信任，是專業</b>。發現錯了不是失敗，是檢查點在工作。</li>
+    <li>交辦內容寫「工作」不寫「機密」：身分證字號、密碼、財務明細不要貼。</li>
+    <li>各家介面改版頻繁，找不到功能時別慌——五欄照貼，一樣能完成全部練習。</li>
+  </ul>
+
+  <footer>
+    <span>放手交給 AI · 實作工作坊 · 工具表</span>
+    <span>免費功能與介面查證日期：2026-07-12（官方說明中心）</span>
+  </footer>
+
+</div>
+</body>
+</html>
