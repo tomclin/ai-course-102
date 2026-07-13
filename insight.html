@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+<title>102 結業洞察 — 陣營地圖與三個帶得走的智慧</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    color-scheme: light dark;
+    --paper:#F7F6F2;
+    --surface:#FFFFFF;
+    --ink:#17263B;
+    --muted:#3D4A5C;
+    --faint:#677180;
+    --teal:#2E7D6B;
+    --seal:#B5432E;
+    --hair:#D9D6CE;
+    --on-accent:#FDFBF7;
+    --wash:#EDF3F1;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --paper:#14181F;
+      --surface:#1C222B;
+      --ink:#E8E5DE;
+      --muted:#B4BCC7;
+      --faint:#87919D;
+      --teal:#4FA893;
+      --seal:#D4664F;
+      --hair:#2A3038;
+      --on-accent:#16100E;
+      --wash:#1A2420;
+    }
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{background:var(--paper);}
+  body{
+    color:var(--ink);
+    font-family:'Noto Sans TC',sans-serif;line-height:1.8;
+    padding:52px 24px 68px;
+  }
+  .page{max-width:900px;margin:0 auto;}
+
+  /* ---------- opt-in banner ---------- */
+  .banner{
+    background:var(--wash);border:1px solid var(--hair);border-left:4px solid var(--teal);
+    border-radius:8px;padding:14px 18px;margin-bottom:22px;
+  }
+  .banner .k{
+    font-weight:900;color:var(--teal);letter-spacing:.12em;font-size:15px;
+    display:block;margin-bottom:4px;
+  }
+  .banner .u{font-size:15px;color:var(--muted);line-height:1.6;}
+
+  /* ---------- resources strip ---------- */
+  .links{
+    display:flex;flex-wrap:wrap;gap:8px 18px;margin-bottom:30px;
+    font-size:15px;
+  }
+  .links a{color:var(--teal);text-decoration:none;border-bottom:1px solid var(--hair);padding-bottom:1px;}
+  .links a:hover{border-bottom-color:var(--teal);}
+  .links .lead{color:var(--faint);border-bottom:none;}
+
+  .eyebrow{font-size:13px;letter-spacing:.35em;color:var(--faint);margin-bottom:14px;}
+  h1{
+    font-weight:900;font-size:28px;line-height:1.35;
+  }
+  h1 em{font-style:normal;color:var(--teal);}
+  .lede{margin-top:16px;font-size:16px;color:var(--muted);max-width:62ch;}
+  .lede b{color:var(--ink);}
+
+  .secthead{
+    font-weight:700;font-size:15px;
+    letter-spacing:.15em;color:var(--faint);
+    margin:48px 0 18px;display:flex;align-items:center;gap:12px;
+  }
+  .secthead::after{content:"";flex:1;height:1px;background:var(--hair);}
+
+  /* ---------- three camps ---------- */
+  .camps{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;}
+  .camp{
+    background:var(--surface);border:1px solid var(--hair);border-radius:12px;
+    padding:20px 20px 14px;border-top-width:4px;border-top-style:solid;
+  }
+  .camp.native{border-top-color:var(--teal);}
+  .camp.harness{border-top-color:var(--seal);}
+  .camp.evo{border-top-style:dashed;border-top-color:var(--muted);}
+  .camp h2{font-weight:700;font-size:18px;margin-bottom:2px;}
+  .camp.native h2{color:var(--teal);}
+  .camp.harness h2{color:var(--seal);}
+  .camp.evo h2{color:var(--muted);}
+  .camp .creed{
+    font-size:13px;color:var(--faint);margin-bottom:12px;
+    padding-bottom:10px;border-bottom:1px dashed var(--hair);min-height:3.2em;
+  }
+  .co{padding:8px 0;border-bottom:1px solid var(--hair);}
+  .co:last-child{border-bottom:none;}
+  .co b{display:block;font-size:15px;}
+  .co p{font-size:13px;color:var(--muted);}
+
+  /* ---------- deep dive blocks ---------- */
+  .deep{
+    background:var(--surface);border:1px solid var(--hair);border-radius:12px;
+    padding:24px 28px;margin-bottom:16px;
+  }
+  .deep h3{
+    font-weight:700;font-size:18px;margin-bottom:10px;
+  }
+  .deep h3 .n{color:var(--seal);margin-right:8px;}
+  .deep p{font-size:15px;color:var(--muted);margin-bottom:10px;}
+  .deep p:last-child{margin-bottom:0;}
+  .deep b{color:var(--ink);}
+  .deep .punch{
+    margin-top:14px;padding:12px 18px;background:var(--wash);
+    border-left:3px solid var(--teal);border-radius:0 8px 8px 0;
+    font-size:15px;color:var(--ink);
+  }
+  .deep.evo-block .punch{border-left-color:var(--muted);}
+  .deep.gap .punch{border-left-color:var(--seal);}
+  .deep .aside{
+    margin-top:12px;font-size:13px;color:var(--faint);
+    border-top:1px dashed var(--hair);padding-top:10px;line-height:1.7;
+  }
+
+  /* ---------- wisdom ---------- */
+  .wisdom{counter-reset:w;}
+  .wise{
+    display:grid;grid-template-columns:52px 1fr;gap:16px;
+    padding:20px 4px;border-bottom:1px solid var(--hair);
+  }
+  .wise:last-child{border-bottom:none;}
+  .wise::before{
+    counter-increment:w;content:counter(w,cjk-ideographic);
+    font-weight:900;font-size:28px;
+    color:var(--seal);text-align:center;padding-top:2px;
+  }
+  .wise h4{font-weight:700;font-size:18px;margin-bottom:4px;}
+  .wise p{font-size:15px;color:var(--muted);}
+  .wise b{color:var(--ink);}
+
+  .verse{
+    margin-top:40px;text-align:center;
+    font-size:16px;color:var(--muted);line-height:2;
+  }
+  .verse span{display:block;margin-top:4px;font-size:13px;color:var(--faint);letter-spacing:.2em;}
+
+  /* ---------- bridge to 103 ---------- */
+  .bridge{
+    margin-top:48px;text-align:center;
+    padding:34px 20px 10px;border-top:3px double var(--ink);
+  }
+  .bridge .label{font-size:13px;letter-spacing:.35em;color:var(--faint);margin-bottom:14px;}
+  .bridge h2{
+    font-weight:900;font-size:22px;line-height:1.55;
+  }
+  .bridge h2 span{color:var(--teal);}
+  .bridge p{margin-top:14px;font-size:15px;color:var(--muted);max-width:58ch;margin-left:auto;margin-right:auto;}
+  .bridge .next{
+    display:inline-block;margin-top:18px;background:var(--teal);color:var(--on-accent);
+    border-radius:999px;padding:8px 22px;font-size:15px;letter-spacing:.05em;
+  }
+
+  footer{margin-top:36px;font-size:13px;color:var(--faint);line-height:1.9;
+    border-top:1px solid var(--hair);padding-top:14px;}
+  footer .stance{color:var(--muted);font-weight:700;}
+
+  @media (max-width:720px){.camps{grid-template-columns:1fr;}}
+
+  @media print{
+    :root{color-scheme:only light;}
+    body{padding:0;font-size:12.5px;line-height:1.5;}
+    .page{max-width:none;}
+    .banner{margin-bottom:14px;padding:8px 12px;}
+    h1{font-size:22px;}
+    .lede{font-size:13px;}
+    .secthead{margin:22px 0 12px;font-size:13px;}
+    .camps{gap:10px;}
+    .camp{padding:12px 12px 8px;}
+    .deep{padding:14px 16px;margin-bottom:10px;}
+    .deep h3{font-size:15px;}
+    .deep p,.deep .punch{font-size:12.5px;}
+    .wise{padding:12px 4px;}
+    .wise h4{font-size:14px;}
+    .wise p{font-size:12.5px;}
+    .bridge{margin-top:24px;padding:20px 16px 8px;}
+    footer{margin-top:18px;font-size:10.5px;}
+    @page{size:A4;margin:12mm 12mm;}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="banner">
+    <span class="k">進階延伸 · 選修（非課堂必講）</span>
+    <span class="u">怎麼用這張：給想深入的人，或現場遇到深度提問時的備用地圖——平常上課不必翻到這裡。</span>
+  </div>
+
+  <div class="links">
+    <span class="lead">課程連結</span>
+    <a href="https://tomclin.github.io/ai-course-101/trilogy.html">系列總覽</a>
+    <a href="https://tomclin.github.io/ai-course-101/">101</a>
+    <a href="https://tomclin.github.io/ai-course-102/">102</a>
+    <a href="https://tomclin.github.io/ai-course-103/">103</a>
+  </div>
+
+  <div class="eyebrow">第二堂 102 · 結業洞察 · 2026.07</div>
+  <h1>能力該放在模型裡，還是模型外？<br><em>聽懂這場架——包括他們自己都沒吵對的地方。</em></h1>
+  <p class="lede">你今天學會了「放手交給 AI」——授權、檢查點、責任邊界。這一整套圍繞 AI 的結構，業界叫 <b>Harness（工作框架）</b>。此刻整個 AI 世界正為它吵一場架，而這場架的看點不在誰輸誰贏，在於<b>怎麼聽懂各方立場背後的動機</b>。這是結業禮物：三派地圖，加三個帶得走的判讀智慧。</p>
+
+  <div class="secthead">第一層 · 陣營地圖——兩派之爭，一個攪局者</div>
+  <div class="camps">
+    <div class="camp native">
+      <h2>模型原生派</h2>
+      <div class="creed">「框架是暫時的，模型下一版就把它吃掉——別過度投資。」</div>
+      <div class="co"><b>OpenAI（佈道時）</b><p>推理模型推手 Noam Brown 公開勸大家：scaffolding 會被下一代模型吸收，別重壓框架。</p></div>
+      <div class="co"><b>Google DeepMind</b><p>押注 Gemini 原生能力，框架多做企業艦隊調度。</p></div>
+      <div class="co"><b>Vercel</b><p>把自家 text-to-SQL 代理人砍掉約 80% 的工具，反而更快更準。</p></div>
+    </div>
+
+    <div class="camp harness">
+      <h2>Harness 派</h2>
+      <div class="creed">「不是模型的部分就是框架——而它決定成敗的一大半。」</div>
+      <div class="co"><b>LangChain</b><p>在 TerminalBench 2.0 上模型不動（GPT-5.2-Codex），只改框架——提示、工具、中介層——分數大幅拉升。</p></div>
+      <div class="co"><b>Manus</b><p>重寫框架四次，模型沒換、可靠度一路升。</p></div>
+      <div class="co"><b>Microsoft</b><p>企業要的是管理代理人艦隊的平台層。</p></div>
+    </div>
+
+    <div class="camp evo">
+      <h2>演化派 · 攪局者</h2>
+      <div class="creed">「框架有價值——Harness 派說對了；但造框架別靠人手工——這點得聽對面的。」</div>
+      <div class="co"><b>Sakana AI（東京）</b><p>Transformer 論文共同作者創辦。Darwin Gödel Machine：模型凍結不動，讓 AI 自己改寫自己的框架程式碼，SWE-bench 成績自動翻倍（20%→50%）。</p></div>
+      <div class="co"><b>兩面出擊</b><p>演化出的框架跨模型仍有效（回擊模型派）；手工護城河會被機器的尋索吃掉（警醒框架派）。</p></div>
+    </div>
+  </div>
+
+  <div class="secthead">第二層 · 巨頭的言與行——這才是真功課</div>
+
+  <div class="deep gap">
+    <h3><span class="n">壹</span>OpenAI：說的是薄，做的是全業界最厚</h3>
+    <p>台上，產品線勸全世界「別瞎忙框架，模型會吸收」。台下，自家 Codex 卻是業界最重的框架之一：嚴格的指令優先級堆疊（平台指令永遠壓過你的指令）、隔離沙盒、狀態快照恢復；同時把記憶、防護、控制流全部收進自家 Agents SDK，直接抽走第三方框架的氧氣。</p>
+    <p>這不是偽善，是<b>教科書級的商業策略</b>：「把互補品變成大宗商品」。模型擁有者勸你別建框架，等於勸你別在它與你的客戶之間築牆——牆，它要自己蓋。</p>
+    <div class="punch">判讀法則：一家公司的建議，永遠先問「這建議對誰的生意有利」。</div>
+  </div>
+
+  <div class="deep gap">
+    <h3><span class="n">貳</span>Anthropic 悖論：嘴上最薄，手上把 harness 磨成業界標竿</h3>
+    <p>Anthropic 把自家運行核心稱為「笨迴圈（dumb loop）」——<b>所有智能住在模型裡，框架一律不替模型思考</b>。這裡有個真的有用的洞見：薄，不是少做，是<b>換地方做</b>——把思考從結構挪回模型，結構只當環境（給模型一台真電腦、把脈絡削到最少而最準、把接口做成公開協議 MCP 讓全生態共用）。</p>
+    <p>但別給它免費通行證。嘴上說「所有秘密武器都在模型本身、追求最薄的包裝」，實際上 Anthropic 把 Claude Code 的 harness 打磨成業界標竿，再包成 <b>Claude Agent SDK</b>（自架）與 <b>Managed Agents 託管服務</b>（Anthropic 替你跑迴圈、沙盒、對話紀錄）出貨——<b>說模型派的話，做 harness 派的事</b>。這條言行落差，跟壹的 OpenAI 是同一條線，只是換了措辭。</p>
+    <div class="punch">判讀法則：厚薄先別急著選邊。真正該問的是「這一層結構在替模型思考，還是只當它的環境」——但也別忘了問「說薄的人，自己在賣什麼」。</div>
+    <p class="aside">誠實補一句：你此刻讀到這段「連 Anthropic 也走言行落差」的批評，本身是透過一個 Anthropic 打造的助理送到你面前的——這就是「看見證，不看佈道」最貼身的一次示範。</p>
+  </div>
+
+  <div class="deep evo-block">
+    <h3><span class="n">參</span>Sakana：把兩派吵的問題，整個自動化</h3>
+    <p>先把結構說準：嚴格分類上，它不是與模型原生派平行的第三陣營，而是 <b>Harness 派內部的方法革命</b>——同意「框架有價值」（Harness 派的立場），卻拿對面的信條「別靠人手工，讓機器自己找」來造框架。<b>兩派的邏輯，在它身上合體。</b>真正的地圖是兩個維度：能力放在哪裡（模型內／外）× 設計靠誰（人的手工／機器的尋索）。</p>
+    <p>學術圈六十年前的老問題：機器能不能改進自己？東京的 Sakana AI 給出目前最務實的答案。Darwin Gödel Machine 維護一個框架變體的「族譜」，像生物演化一樣不斷分支、突變、淘汰——<b>連「保留哪個舊版本」都不挑最強的，因為演化需要繞路</b>。它自己發現了補丁驗證、錯誤記憶這些人類工程師的最佳實踐——沒人教。</p>
+    <p>這是 AI 史上最重要的教訓（Bitter Lesson）的遞迴應用：手工設計的特徵輸給了機器學習到的特徵，那<b>手工設計的框架，憑什麼不輸給尋索出來的框架？</b>（尋索 search：讓機器在設計空間裡自行生成、試錯、演化——與搜尋引擎「檢索既有資料」是兩回事。）Sakana 更主張這件事不需要巨頭的天價算力——自我改進應是「民主化的公共財」。</p>
+    <div class="punch">判讀法則：聽到「A 派 vs B 派」，先拆維度——很多「第三派」，其實是在另一個維度上掀桌。</div>
+  </div>
+
+  <div class="secthead">第三層 · 三個帶得走的智慧</div>
+  <div class="wisdom">
+    <div class="wise">
+      <div><h4>看見證，不看佈道</h4>
+      <p>言行落差不是醜聞，是資訊——<b>落差的方向，暴露真實的賭注</b>。嘴上說模型萬能、手上狂建框架的公司，是在告訴你框架真的值錢。這一條對兩大巨頭一視同仁：OpenAI 與 Anthropic 都在走這條線。這個判讀法適用於一切商業論述，不只 AI。</p></div>
+    </div>
+    <div class="wise">
+      <div><h4>分清「替模型補短板」與「編碼你的意圖」</h4>
+      <p>替模型拆步驟、補推理的結構，會被下一版模型或下一輪演化吃掉——那是<b>鷹架，該建就建，該拆就拆</b>。但你的目標、規則、驗收標準、責任邊界（今天 102 教的一切），沒有任何模型版本能替你長出來——<b>那是圖紙，永遠是你的</b>。</p></div>
+    </div>
+    <div class="wise">
+      <div><h4>連框架都能演化時，人剩下什麼？</h4>
+      <p>Sakana 的機器能改寫自己的程式碼，但有一樣東西它碰不了：<b>「什麼叫更好」是人定的</b>。演化需要適應度函數，交辦需要驗收標準，放手需要責任邊界——定義目標、驗證成果、承擔後果，這三件事在可見的未來都在你手上。</p></div>
+    </div>
+  </div>
+
+  <div class="verse">「將事隱藏乃　神的榮耀；將事察清乃君王的榮耀。」<span>箴言 25:2</span></div>
+
+  <div class="bridge">
+    <div class="label">To Be Continued · 第三堂預告</div>
+    <h2>機器越來越會自己改自己，<br>所以<span>看懂它</span>，變成你最值錢的能力。</h2>
+    <p>它何時可靠、何時走鐘？為什麼越講越篤定、越講越遠？下一堂，換你認識 AI——學會診斷漂移，把工作拉回正軌。</p>
+    <div class="next">第三堂 103 · 換你認識 AI</div>
+  </div>
+
+  <footer>
+    <span class="stance">資料時點 2026.07 · 觀點發展中 · 鼓勵自行查證</span><br>
+    關鍵出處：Noam Brown 公開談話（2026）／ LangChain Engineering, TerminalBench 2.0（2026.02，同一模型只改框架、分數大幅拉升）／ Vercel「We removed 80% of our agent's tools」（2026）／ Manus, "Context Engineering for AI Agents"（框架四次重寫）／ OpenAI Codex 架構文件與 Agents SDK（2026）／ Anthropic「dumb loop」、Claude Agent SDK、Managed Agents 與 MCP／context engineering 指南（2025–2026）／ Zhang, Hu, Lu, Lange &amp; Clune, "Darwin Gödel Machine: Open-Ended Evolution of Self-Improving Agents"（Sakana AI × Jeff Clune 實驗室 UBC／Vector Institute, arXiv:2505.22954；SWE-bench 20%→50%、Polyglot 14.2%→30.7%）。本頁為課程結業補充，數字與介面時有變動，觀點發展中，鼓勵自行查證與持續追蹤。
+  </footer>
+
+</div>
+</body>
+</html>
