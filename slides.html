@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="light dark">
-<title>放手交給 AI — 講師 Slides v1.1</title>
+<title>放手交給 AI — 講師 Slides v1.2</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
   :root{
@@ -176,6 +176,17 @@
     font-size:12px;color:var(--faint);letter-spacing:.1em;opacity:.8;
   }
 
+  /* spectrum (slide 5) */
+  .spec{margin-top:3vh;}
+  .specbar{display:grid;grid-template-columns:repeat(10,1fr);gap:6px;}
+  .specbar div{background:var(--surface);border:1px solid var(--hair);border-radius:6px;text-align:center;padding:1.1vh 0;font-weight:700;font-size:clamp(22px,1.25vw,24px);color:var(--faint);}
+  .specbar div.on{background:var(--teal);color:var(--on-accent);border-color:var(--teal);}
+  .speclab{display:grid;grid-template-columns:repeat(10,1fr);gap:6px;margin-top:.6vh;}
+  .speclab div{font-size:clamp(20px,1.15vw,22px);color:var(--muted);text-align:center;line-height:1.3;}
+  .specpills{display:flex;gap:1vw;margin-top:2.2vh;flex-wrap:wrap;}
+  .specpills span{background:var(--wash);border:1px solid var(--hair);border-radius:999px;padding:.5vh 1em;font-size:clamp(22px,1.25vw,24px);font-weight:500;}
+  .srcfoot{margin-top:2vh;font-size:clamp(20px,1.15vw,22px);color:var(--faint);}
+
   @media print{
     :root{color-scheme:only light;}
     .slide{display:flex;page-break-after:always;width:auto;height:96vh;}
@@ -256,17 +267,14 @@
 <section class="slide">
   <div class="ladder-mini"><span class="on" style="height:18px"></span><span style="height:34px"></span><span style="height:50px"></span></div>
   <div class="lvtag">第一層 · 授權光譜</div>
-  <h1>從『每步都看』<br>到『定點監督』</h1>
-  <div class="rung2">
-    <div class="theory">
-      <div class="src">Sheridan &amp; Verplank (1978) 自動化程度研究</div>
-      <p>人盯機器盯到什麼程度，五十年前就被畫成一條光譜。</p>
-    </div>
-    <div class="ai">
-      <div class="tag">AI 時代重寫</div>
-      <p>你不必在「全自己來」和「全放給它」之間二選一——<em>光譜上每一格都是合法位置</em>。</p>
-    </div>
+  <h1>放手不是開關，是<em>十格光譜</em></h1>
+  <div class="spec">
+    <div class="specbar"><div class="on">1</div><div>2</div><div>3</div><div>4</div><div class="on">5</div><div>6</div><div class="on">7</div><div>8</div><div>9</div><div class="on">10</div></div>
+    <div class="speclab"><div>全手動</div><div></div><div></div><div></div><div>人批准後<br>機器執行</div><div></div><div>做完必須<br>回報</div><div></div><div></div><div>全自主<br>不理人</div></div>
+    <div class="specpills"><span>問答工具 ≈ 2–4</span><span><b>今天練的交辦 ≈ 5–7</b></span><span>全自主 agent ≈ 8–10</span></div>
   </div>
+  <p class="sub" style="max-width:none;margin-top:2.5vh">級越高不是越好——按<strong>錯誤成本、可逆性、問責</strong>選格。核心問題只有一個：<strong>誰有最終決策權、否決權、知情權？</strong></p>
+  <div class="srcfoot">Sheridan &amp; Verplank 1978 十級自動化光譜（in the loop／on the loop 為後世慣用標籤）</div>
   <div class="pagenum">5 / 13</div>
 </section>
 
@@ -275,6 +283,7 @@
   <div class="ladder-mini"><span style="height:18px"></span><span class="on" style="height:34px"></span><span style="height:50px"></span></div>
   <div class="lvtag">第二層 · 檢查點</div>
   <h1>檢查點只有三種</h1>
+  <p class="sub" style="margin-top:1vh">檢查點，是你在光譜 5–7 之間<strong>站穩</strong>的方法。</p>
   <div class="cards3">
     <div><div class="lv">一</div><b>計畫核可</b><p>動工前，先看它的計畫。</p></div>
     <div><div class="lv">二</div><b>中途抽查</b><p>做到約定的那一步，停下來給你看。</p></div>
@@ -287,18 +296,15 @@
 <!-- 7 · 理論 參：責任邊界 -->
 <section class="slide">
   <div class="ladder-mini"><span style="height:18px"></span><span style="height:34px"></span><span class="on" style="height:50px"></span></div>
-  <div class="lvtag">第三層 · 責任邊界</div>
-  <h1>猴子不外包</h1>
-  <div class="rung2">
-    <div class="theory">
-      <div class="src">Oncken &amp; Wass (1974)〈Who's Got the Monkey?〉Harvard Business Review</div>
-      <p>管理學經典：責任這隻猴子，永遠在你肩上。</p>
-    </div>
-    <div class="ai">
-      <div class="tag">AI 時代重寫</div>
-      <p>你交辦的是工作，<em>不是責任</em>。出錯時面對世界的人，還是你——所以檢查點是你的，不是它的。</p>
-    </div>
+  <div class="lvtag">第三層 · 責任邊界 · 猴子＝下一步的責任</div>
+  <h1>猴子怎麼跳到你背上</h1>
+  <div class="cards3">
+    <div><div class="lv">一</div><b>「有個問題」</b><p>對方開口，猴子在他背上。</p></div>
+    <div><div class="lv">二</div><b>「我想想再說」</b><p>你一接話，猴子跳到你背上。</p></div>
+    <div><div class="lv">三</div><b>你成了瓶頸</b><p>他反過來追你進度——全隊等你。</p></div>
   </div>
+  <div class="rulebar"><b>原則：</b>猴子留在<b>能處理它的最低層級</b>。AI 時代反用——工作可以交給 AI，<b>猴子永不外包</b>：出錯時面對世界的，是你。</div>
+  <div class="srcfoot">Oncken &amp; Wass 1974〈Management Time: Who's Got the Monkey?〉Harvard Business Review——HBR 史上最暢銷重印文章之一</div>
   <div class="pagenum">7 / 13</div>
 </section>
 
@@ -308,6 +314,7 @@
   <h1>快與穩，你都要</h1>
   <p class="sub" style="margin-top:4vh;border-top:3px double var(--ink);padding-top:3vh;max-width:none">
     <span class="kicker" style="display:block;margin-bottom:1vh">Guiding Principle · 指導方針</span>
+    <span style="display:block;font-size:clamp(28px,1.67vw,32px);color:var(--muted);margin-bottom:1vh">授權層級可以不同，<strong>下一步責任不能模糊</strong>。</span>
     <span style="display:block;font-size:clamp(28px,1.67vw,32px);color:var(--muted);margin-bottom:1.5vh">想快，就放手；想穩，就設檢查點——今天兩個都要。</span>
     <span class="quote" style="font-size:clamp(38px,2.9vw,56px)">放手，<span class="hl">但不放養</span>。</span><br>
     <span style="font-size:clamp(28px,1.67vw,32px)">Delegate, don't abdicate.——交出去的是工作，不是責任。</span>
