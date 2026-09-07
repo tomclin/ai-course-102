@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="light dark">
-<title>放手交給 AI — 講師 Slides v1.0</title>
+<title>放手交給 AI — 講師 Slides v1.1</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
   :root{
@@ -36,7 +36,7 @@
   }
   *{margin:0;padding:0;box-sizing:border-box;}
   html,body{background:var(--paper);color:var(--ink);}
-  body{font-family:'Noto Sans TC',sans-serif;line-height:1.6;}
+  body{font-family:'Noto Sans TC',sans-serif;line-height:1.5;}
 
   .slide{
     display:none;
@@ -48,23 +48,23 @@
   .slide.active{display:flex;}
 
   .kicker{
-    font-size:clamp(12px,1.4vw,15px);letter-spacing:.35em;color:var(--faint);
+    font-size:clamp(22px,1.25vw,24px);letter-spacing:.2em;color:var(--faint);
     text-transform:uppercase;margin-bottom:2.2vh;
   }
   h1{
     font-family:'Noto Sans TC',sans-serif;font-weight:900;
-    font-size:clamp(34px,5.6vw,72px);line-height:1.28;
+    font-size:clamp(48px,3.75vw,72px);line-height:1.2;
   }
   h1 em{font-style:normal;color:var(--teal);}
   h1 .soft{color:var(--faint);}
-  .sub{margin-top:2.5vh;font-size:clamp(16px,2vw,24px);color:var(--muted);max-width:60ch;}
+  .sub{margin-top:2.5vh;font-size:clamp(28px,1.67vw,32px);color:var(--muted);max-width:42ch;}
   .sub strong{color:var(--teal);}
   .seal-text{color:var(--seal);}
 
   .stamp{
     display:inline-block;background:var(--seal);color:var(--on-accent);
     font-family:'Noto Sans TC',sans-serif;font-weight:700;
-    font-size:clamp(16px,2vw,24px);letter-spacing:.2em;
+    font-size:clamp(28px,1.67vw,32px);letter-spacing:.2em;
     padding:.5em .9em;border-radius:3px;transform:rotate(-2deg);
   }
 
@@ -74,14 +74,14 @@
   }
   .srcline{
     position:absolute;bottom:3.2vh;left:7vw;right:18vw;
-    font-size:clamp(12px,1.4vw,15px);color:var(--faint);
+    font-size:clamp(20px,1.15vw,22px);color:var(--faint);
   }
 
   /* hands-up poll */
   .poll{margin-top:4vh;display:grid;gap:1.6vh;max-width:880px;}
   .poll div{
     background:var(--surface);border:1px solid var(--hair);border-radius:10px;
-    padding:1.6vh 1.4em;font-size:clamp(16px,2vw,24px);
+    padding:1.6vh 1.4em;font-size:clamp(28px,1.67vw,32px);
     display:flex;gap:.7em;align-items:baseline;
   }
   .poll b{color:var(--teal);font-family:'Noto Sans TC',sans-serif;white-space:nowrap;}
@@ -89,21 +89,21 @@
   /* story slides */
   .story-num{
     font-family:'Noto Sans TC',sans-serif;font-weight:900;
-    font-size:clamp(60px,10vw,130px);color:var(--wash);
+    font-size:clamp(64px,5vw,96px);color:var(--wash);
     -webkit-text-stroke:2px var(--teal);
     line-height:1;margin-bottom:1vh;
   }
   .bigfact{
     margin-top:3vh;font-family:'Noto Sans TC',sans-serif;font-weight:900;
-    font-size:clamp(40px,7vw,96px);color:var(--teal);line-height:1.2;
+    font-size:clamp(48px,3.75vw,72px);color:var(--teal);line-height:1.2;
   }
   .bigfact small{display:block;font-family:'Noto Sans TC',sans-serif;font-weight:500;
-    font-size:clamp(16px,2vw,24px);color:var(--muted);margin-top:1vh;letter-spacing:.05em;}
+    font-size:clamp(28px,1.67vw,32px);color:var(--muted);margin-top:1vh;letter-spacing:.05em;}
 
   /* quote slide */
   .quote{
     font-family:'Noto Sans TC',sans-serif;font-weight:900;
-    font-size:clamp(30px,4.6vw,60px);line-height:1.5;max-width:22em;
+    font-size:clamp(38px,2.9vw,56px);line-height:1.5;max-width:22em;
   }
   .quote em{font-style:normal;color:var(--seal);}
   .quote .hl{color:var(--teal);}
@@ -111,18 +111,18 @@
   /* theory rung slides */
   .lvtag{
     font-family:'Noto Sans TC',sans-serif;font-weight:700;
-    font-size:clamp(12px,1.4vw,15px);color:var(--faint);letter-spacing:.3em;
+    font-size:clamp(22px,1.25vw,24px);color:var(--faint);letter-spacing:.18em;
     margin-bottom:1vh;
   }
   .rung2{
     display:grid;grid-template-columns:1fr 1fr;gap:4vw;margin-top:3.5vh;align-items:start;
   }
-  .rung2 .theory .src{font-size:clamp(12px,1.4vw,15px);color:var(--faint);margin:.6vh 0 1.2vh;}
-  .rung2 .theory p{font-size:clamp(16px,2vw,24px);color:var(--muted);max-width:30ch;}
-  .rung2 h3{font-family:'Noto Sans TC',sans-serif;font-weight:700;font-size:clamp(20px,2.6vw,30px);}
+  .rung2 .theory .src{font-size:clamp(20px,1.15vw,22px);color:var(--faint);margin:.6vh 0 1.2vh;}
+  .rung2 .theory p{font-size:clamp(28px,1.67vw,32px);color:var(--muted);max-width:30ch;}
+  .rung2 h3{font-family:'Noto Sans TC',sans-serif;font-weight:700;font-size:clamp(30px,2.1vw,40px);}
   .rung2 .ai{border-left:3px solid var(--teal);padding-left:2vw;}
-  .rung2 .ai .tag{font-size:clamp(12px,1.4vw,15px);letter-spacing:.28em;color:var(--teal);font-weight:700;margin-bottom:1vh;}
-  .rung2 .ai p{font-size:clamp(16px,2vw,24px);max-width:26ch;}
+  .rung2 .ai .tag{font-size:clamp(22px,1.25vw,24px);letter-spacing:.16em;color:var(--teal);font-weight:700;margin-bottom:1vh;}
+  .rung2 .ai p{font-size:clamp(28px,1.67vw,32px);max-width:26ch;}
   .rung2 .ai em{font-style:normal;color:var(--teal);font-weight:700;}
   .ladder-mini{
     position:absolute;top:6vh;right:7vw;display:flex;gap:6px;align-items:flex-end;
@@ -136,12 +136,12 @@
     background:var(--surface);border:1px solid var(--hair);border-radius:12px;
     padding:3vh 1.6em;
   }
-  .cards3 .lv{font-size:clamp(12px,1.4vw,15px);letter-spacing:.25em;color:var(--seal);font-weight:700;margin-bottom:1vh;}
-  .cards3 b{display:block;font-family:'Noto Sans TC',sans-serif;font-size:clamp(20px,2.6vw,30px);margin-bottom:1vh;}
-  .cards3 p{font-size:clamp(16px,2vw,24px);color:var(--muted);}
+  .cards3 .lv{font-size:clamp(22px,1.25vw,24px);letter-spacing:.15em;color:var(--seal);font-weight:700;margin-bottom:1vh;}
+  .cards3 b{display:block;font-family:'Noto Sans TC',sans-serif;font-size:clamp(30px,2.1vw,40px);margin-bottom:1vh;}
+  .cards3 p{font-size:clamp(28px,1.67vw,32px);color:var(--muted);}
   .rulebar{
     margin-top:3.5vh;background:var(--wash);border-left:4px solid var(--seal);
-    padding:1.6vh 1.4em;font-size:clamp(16px,2vw,24px);
+    padding:1.6vh 1.4em;font-size:clamp(28px,1.67vw,32px);
   }
   .rulebar b{color:var(--seal);}
 
@@ -153,14 +153,14 @@
   }
   .bench .rank .n{
     font-family:'Noto Sans TC',sans-serif;font-weight:900;
-    font-size:clamp(40px,6.5vw,88px);line-height:1.1;white-space:nowrap;
+    font-size:clamp(48px,3.75vw,72px);line-height:1.1;white-space:nowrap;
   }
   .bench .rank.good .n{color:var(--teal);}
   .bench .rank.bad .n{color:var(--faint);}
-  .bench .rank p{font-size:clamp(16px,2vw,24px);color:var(--muted);margin-top:.6vh;}
+  .bench .rank p{font-size:clamp(28px,1.67vw,32px);color:var(--muted);margin-top:.6vh;}
   .bench .vs{
     font-family:'Noto Sans TC',sans-serif;font-weight:900;
-    font-size:clamp(20px,2.6vw,30px);color:var(--seal);white-space:nowrap;
+    font-size:clamp(30px,2.1vw,40px);color:var(--seal);white-space:nowrap;
   }
 
   /* CTA slide */
@@ -168,7 +168,7 @@
     margin-top:4vh;background:var(--surface);border:2px solid var(--teal);border-radius:14px;
     padding:3.5vh 2em;max-width:760px;
   }
-  .cta-box p{font-size:clamp(16px,2vw,24px);color:var(--muted);}
+  .cta-box p{font-size:clamp(28px,1.67vw,32px);color:var(--muted);}
   .cta-box b{color:var(--ink);}
 
   .navhint{
@@ -308,9 +308,9 @@
   <h1>快與穩，你都要</h1>
   <p class="sub" style="margin-top:4vh;border-top:3px double var(--ink);padding-top:3vh;max-width:none">
     <span class="kicker" style="display:block;margin-bottom:1vh">Guiding Principle · 指導方針</span>
-    <span style="display:block;font-size:clamp(16px,2vw,24px);color:var(--muted);margin-bottom:1.5vh">想快，就放手；想穩，就設檢查點——今天兩個都要。</span>
-    <span class="quote" style="font-size:clamp(28px,4.2vw,54px)">放手，<span class="hl">但不放養</span>。</span><br>
-    <span style="font-size:clamp(12px,1.4vw,15px)">Delegate, don't abdicate.——交出去的是工作，不是責任。</span>
+    <span style="display:block;font-size:clamp(28px,1.67vw,32px);color:var(--muted);margin-bottom:1.5vh">想快，就放手；想穩，就設檢查點——今天兩個都要。</span>
+    <span class="quote" style="font-size:clamp(38px,2.9vw,56px)">放手，<span class="hl">但不放養</span>。</span><br>
+    <span style="font-size:clamp(28px,1.67vw,32px)">Delegate, don't abdicate.——交出去的是工作，不是責任。</span>
   </p>
   <div class="pagenum">8 / 13</div>
 </section>
@@ -493,7 +493,7 @@
     <p><b>本週就用交辦卡交辦一件真事。</b>計畫先看、檢查點停、驗收再收——跑完一輪，你就回不去了。</p>
   </div>
   <p class="sub" style="margin-top:3vh">今天教的檢查點、授權表——工具會變，但<strong>『你定義什麼叫做好』</strong>不會變。那是你的圖紙，不是 AI 的。</p>
-  <p class="quote" style="margin-top:5vh;font-size:clamp(26px,4vw,52px)">放手，<span class="hl">但不放養</span>。</p>
+  <p class="quote" style="margin-top:5vh;font-size:clamp(38px,2.9vw,56px)">放手，<span class="hl">但不放養</span>。</p>
   <div class="pagenum">13 / 13</div>
 </section>
 
@@ -505,7 +505,11 @@
   function show(n){
     i=Math.max(0,Math.min(slides.length-1,n));
     slides.forEach((s,k)=>s.classList.toggle('active',k===i));
+    history.replaceState(null,'','#'+i);
   }
+  const h0=parseInt((location.hash||'').slice(1));
+  if(Number.isFinite(h0)&&h0>0) show(h0);
+  addEventListener('hashchange',()=>{const h=parseInt(location.hash.slice(1));if(Number.isFinite(h)&&h!==i)show(h);});
   const hint=document.querySelector('.navhint');
   function hideHint(){ if(hint) hint.style.display='none'; }
   addEventListener('keydown',e=>{
