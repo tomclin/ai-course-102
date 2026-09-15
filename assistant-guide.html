@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>102 助教手冊 — 放手交給 AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    color-scheme: light dark;
+    --paper:#F7F6F2; --surface:#FFFFFF; --ink:#17263B; --muted:#3D4A5C; --faint:#677180;
+    --teal:#2E7D6B; --seal:#B5432E; --hair:#D9D6CE; --wash:#EDF3F1; --on-accent:#FDFBF7;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --paper:#14181F; --surface:#1C222B; --ink:#E8E5DE; --muted:#B4BCC7; --faint:#87919D;
+      --teal:#4FA893; --seal:#D4664F; --hair:#2A3038; --wash:#1A2420; --on-accent:#16100E;
+    }
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    font-family:"Noto Sans TC",sans-serif;font-weight:400;
+    background:var(--paper);color:var(--ink);
+    font-size:16px;line-height:1.75;
+    max-width:760px;margin:0 auto;padding:28px 20px 64px;
+  }
+  .kicker{font-size:13px;font-weight:700;letter-spacing:.18em;color:var(--teal);text-transform:uppercase}
+  h1{font-size:28px;font-weight:900;line-height:1.3;margin:6px 0 4px}
+  .sub{font-size:15px;color:var(--muted);margin-bottom:8px}
+  .mission{
+    background:var(--wash);border-left:4px solid var(--teal);border-radius:10px;
+    padding:14px 18px;margin:20px 0;font-size:18px;font-weight:700;
+  }
+  h2{font-size:22px;font-weight:900;margin:36px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--hair)}
+  h3{font-size:18px;font-weight:700;margin:18px 0 6px}
+  p{margin:8px 0}
+  .tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0}
+  table{width:100%;border-collapse:collapse;font-size:15px;margin:0;min-width:480px}
+  th{font-weight:700;text-align:left;color:var(--muted);font-size:13px;letter-spacing:.06em}
+  th,td{padding:9px 10px;border-bottom:1px solid var(--hair);vertical-align:top}
+  .clock{font-weight:900;color:var(--teal);white-space:nowrap}
+  .card{background:var(--surface);border:1px solid var(--hair);border-radius:14px;padding:16px 18px;margin:12px 0}
+  .card h3{margin-top:0}
+  .lv{display:inline-block;font-size:13px;font-weight:700;color:var(--on-accent);background:var(--teal);border-radius:999px;padding:2px 12px;margin-right:8px}
+  .pass{font-weight:700;color:var(--teal)}
+  .warn{font-weight:700;color:var(--seal)}
+  .say{background:var(--wash);border-radius:8px;padding:2px 8px;font-weight:500}
+  ul,ol{padding-left:22px;margin:8px 0}
+  li{margin:6px 0}
+  .qa dt{font-weight:700;margin-top:14px}
+  .qa dd{margin:4px 0 0 0;color:var(--muted)}
+  .note{font-size:15px;color:var(--muted);font-style:italic;margin:10px 0}
+  .foot{margin-top:44px;padding-top:14px;border-top:1px solid var(--hair);font-size:13px;color:var(--faint)}
+  a{color:var(--teal)}
+  @media (max-width:520px){
+    body{font-size:15px}
+    h1{font-size:24px}
+    h2{font-size:20px}
+    table{font-size:14px}
+    th,td{padding:8px 8px}
+  }
+</style>
+</head>
+<body>
+
+<div class="kicker">助教手冊 · 課程限定 · v0.2</div>
+<h1>放手交給 AI——讓你的 AI 同事真正上工</h1>
+<p class="sub">2026/10/17（六）10:00–12:00 · 卓越行道會飛航福音中心 · 講師：中致 · 助教：<b>貓科（留任）＋億芸（101 學員，自願分享者）＋一位招募中</b>（小魚赴英、小Q 大學課業未定，均不列編）</p>
+
+<div class="mission">你們的一句話任務：讓每個人<b>完整走完一輪交辦循環</b>——計畫核可→檢查點→驗收——並且<b>自己說得出檢查點攔到了什麼</b>。<br>
+<span style="font-size:15px;font-weight:500">不是替他做完，是讓他做到。手，永遠不碰學員的手機和鍵盤。</span></div>
+
+<h2>一、當天時間軸（你們的主場是 10:40–11:40）</h2>
+<div class="tablewrap">
+<table>
+<tr><th>時刻</th><th>課堂進度（分鐘數）</th><th>你們做什麼</th></tr>
+<tr><td class="clock">10:00</td><td>暖場：兩問舉手調查（00–05）</td><td>坐學員區。記下第二題「AI 做歪過」舉手的人是誰——後面找分享人選用得到</td></tr>
+<tr><td class="clock">10:05</td><td>開場故事：小Q 駕照 App，爸爸那一面（05–20）</td><td>聽。故事口徑不由助教補充，見第五節「不加故事」</td></tr>
+<tr><td class="clock">10:20</td><td>理論：授權光譜／檢查點三型／猴子理論（20–35）</td><td>順手認一下誰是第一次交辦 AI 的長輩，記位置</td></tr>
+<tr><td class="clock">10:35</td><td>實作說明＋發卡（35–40）</td><td>協助發紙本：題卡 ×3＋交辦檢查點工具表，每人一套</td></tr>
+<tr><td class="clock"><b>10:40</b></td><td><b>實作 I 開始：全員 Level 1 交辦卡（40–65）</b></td><td><b>前 8 分鐘全員優先顧第一次交辦的學員</b>，重點在「選事」——見 Q&amp;A 第一條</td></tr>
+<tr><td class="clock">10:52</td><td>講師廣播：還沒放行的，現在看計畫，核可或改掉一條再放行（實作 I 第 12 分）</td><td>掃自己區：誰還停在第一步（沒填完五欄／AI 還沒回計畫）→ <b>30 秒內回報講師人數</b></td></tr>
+<tr><td class="clock">11:00</td><td>講師廣播：進驗收了，說得出哪裡過、哪裡不過才算走完（實作 I 第 20 分）</td><td>逐人聽一句驗收判斷；<b>回報卡在第一步的人數</b></td></tr>
+<tr><td class="clock">11:05</td><td>全場暫停：TerminalBench 橋段＋課程涵蓋地圖（65–70）</td><td>喘口氣；<b>此時前把亮眼學員回報講師</b>（分享人選，優先「被攔到東西」的案例）</td></tr>
+<tr><td class="clock"><b>11:10</b></td><td><b>實作 II：分級深化（70–100）</b></td><td>分區顧卡：常交辦者→<a href="card-level2.html">L2</a>、帶團隊者→<a href="card-level3.html">L3</a>、第一次交辦者→續磨 <a href="card-level1.html">L1</a></td></tr>
+<tr><td class="clock">11:25</td><td>講師廣播：開始用<b>真實任務</b>實測，不要紙上談兵（85 分）</td><td><b>回報人數</b>；同時抓「紅線抄了沒實測」「紅隊測試沒做」的假完成</td></tr>
+<tr><td class="clock">11:35</td><td>講師廣播：留兩分鐘存檔（95 分）</td><td>幫學員找到「存到哪」：<a href="tools.html">工具表</a>「怎麼要求它先計畫再逐步執行」那一欄的專案／Gem 做法</td></tr>
+<tr><td class="clock">11:40</td><td>成果分享，2–3 位 ×3 分鐘（100–112）</td><td>回學員區；被邀分享的學員給他打氣。手機計時由講師掌控，不要幫忙切</td></tr>
+<tr><td class="clock">11:52</td><td>收尾：講師 demo →AI 會錯叮嚀→行動呼籲（112–120）</td><td>坐好。demo 若翻車不要出聲救場，講師有預錄備案</td></tr>
+<tr><td class="clock">12:00</td><td>散場</td><td>投影停在 Slide 13，不關</td></tr>
+</table>
+</div>
+
+<h2>二、三張題卡各是什麼</h2>
+
+<div class="card">
+<h3><span class="lv">L1</span>交辦卡——全員起手，本課核心 <a href="card-level1.html" style="font-size:13px;font-weight:500;color:var(--teal);">開卡 ↗</a></h3>
+<p><b>做什麼</b>：①選一件「有步驟、有成品、30 分鐘內可驗收」的小事 → ②交辦五欄填卡（目標／先給我看計畫再動工／檢查點／成品格式／驗收標準；開頭先貼 <a href="https://tomclin.github.io/ai-course-101/card-level1.html">101 脈絡卡 ↗</a>）→ ③AI 回計畫，核可或修改後放行 → ④在檢查點驗看 → ⑤成品對照驗收標準，說出哪裡過、哪裡不過。</p>
+<p><b class="pass">完成判準：完整走完一輪交辦循環，成品真的能用，而且學員自己說得出檢查點攔到了什麼。</b></p>
+<p><b>常見假完成</b>：<b>跳過計畫核可，直接跟 AI 要成品</b>。只求快的學員十之八九是這一型——請他補走「計畫核可」那一步，那正是今天要練的東西。</p>
+</div>
+
+<div class="card">
+<h3><span class="lv">L2</span>檢查點清單——常在交辦的人做 <a href="card-level2.html" style="font-size:13px;font-weight:500;color:var(--teal);">開卡 ↗</a></h3>
+<p><b>做什麼</b>：選一件<b>會重複交辦</b>的事 → 設計三型檢查點（計畫核可／中途抽查／交付驗收）→ 加「必停紅線」四項：<b>花錢、寄出、刪除、對外發佈——碰到一律停下來問</b> → 用真實任務實測一輪。</p>
+<p><b class="pass">完成判準：清單至少攔下一件他沒料到的事，或完整跑通。</b></p>
+<p><b>常見假完成</b>：<b>紅線抄了沒實測</b>——四項紅線工整寫在卡上，但從頭到尾沒拿真實任務跑過。沒跑過就不算完成，請他挑一件手上真的要做的事跑一輪。</p>
+<p class="note">加分項（講師口頭宣布，L2 卡上沒有）：小規模 vibe coding，用免費 artifacts／canvas 做一個單一功能的小成品。翻車就縮範圍或退回文字成品，<b>加分項不影響完成判準</b>，不要讓學員為了它放掉主線。</p>
+</div>
+
+<div class="card">
+<h3><span class="lv">L3</span>團隊授權表——想帶團隊放手的人挑戰 <a href="card-level3.html" style="font-size:13px;font-weight:500;color:var(--teal);">開卡 ↗</a></h3>
+<p><b>做什麼</b>：三欄（可自行做／須先問我／絕不可做）各至少 3 項，用團隊真實事務 → 連同 <a href="https://tomclin.github.io/ai-course-101/card-level3.html">101-L3 團隊記憶檔 ↗</a>一起餵給 AI → 交辦一件正常任務驗證守規則 → <b>紅隊測試</b>：故意交辦一件「絕不可做」的事，看它會不會引用規則拒絕。</p>
+<p><b class="pass">完成判準：紅隊測試至少一次被規則接住。</b></p>
+<p><b>常見假完成</b>：<b>紅隊測試沒做</b>——授權表寫得漂亮就收工。沒測過等於沒驗證，請他當場故意犯規一次。</p>
+<p><b>常見卡點</b>：沒有 101-L3 記憶檔 → 現場抄 <a href="https://tomclin.github.io/ai-course-101/card-level3.html">101-L3 題卡 ↗</a>示例欄當最小記憶檔（101 公開站 card-level3 有），或寫三行術語表代替，先跑紅隊。紅隊測試 AI 沒擋 → 授權表要放進對話<b>最前面</b>，並要求 AI 先複誦規則再接任務。</p>
+</div>
+
+<h2>三、廣播回報制（102 新增，101 沒有）</h2>
+<p>101 現場出現過學員卡在主線半途無人接的狀況。102 整堂主線就是交辦，卡住的成本更高，所以這場加一條硬規則：</p>
+<ul>
+<li><b>每次講師廣播後 30 秒內</b>，各區助教向講師比手勢或口頭回報：<span class="say">「我這區還有幾人卡在第一步。」</span></li>
+<li>回報節點固定四個：<b class="pass">10:52、11:00、11:25、11:35</b>。</li>
+<li>「卡在第一步」的定義：L1 五欄沒填完、或 AI 還沒回計畫、或計畫回了但學員不知道要不要核可。</li>
+<li><b>主線落後者優先於晉級者。</b> 手上同時有一個做完 L1 想進 L2 的、和一個還沒放行計畫的，先顧後者。想晉級的人自己會往前走，卡在主線的人不會。</li>
+<li>回報是數字，不是求救。講師靠這個數字決定要不要放慢、要不要動用時間彈性預案，不是靠你解決。</li>
+</ul>
+
+<h2>四、排查 Q&amp;A（照這個順序試）</h2>
+<dl class="qa">
+<dt>卡在「選事」，不知道要交辦什麼</dt><dd>最大的卡點就是這個。引導換成「<b>會重複交辦、格式固定、內容會換</b>」的事——週報、菜單、排班、貼文都算。還是想不出來就直接用卡上預設題，先跑完一輪再換自己的。動起來優先於切身。</dd>
+<dt>選的事太大，30 分鐘驗收不完</dt><dd>往小縮。長輩示例在題卡上：「把手機裡 20 張菜市場採買便條，整理成一週採買清單。」</dd>
+<dt>AI 一口氣做完，不停檢查點</dt><dd>指令寫死一句：<span class="say">「完成第一步就停，等我說繼續。」</span>這句直接請學員原句貼進去。</dd>
+<dt>檢查點抓到 AI 的錯</dt><dd><b>這是功能，不是失敗。</b>徵求學員同意後當眾放大：「看，<b>發現錯了不是失敗，是檢查點在工作</b>。」這種案例優先回報講師當分享人選，比一路順的有教學價值。</dd>
+<dt>跳過計畫核可直接要成品</dt><dd>請他補走那一步。不是為了合規，是那一步就是今天的課。</dd>
+<dt>紅線／授權表寫不出來</dt><dd>L2 從四紅線起手（花錢、寄出、刪除、對外發佈），先抄再客製。L3 寫不出術語表 → 反問：「新同工第一天，哪個詞他一定聽不懂？」從那個詞開始。</dd>
+<dt>長輩打字慢</dt><dd>手機語音輸入唸出交辦卡內容；或先手寫、你代貼（<b>唯一可以碰設備的例外，且要先問過</b>）。</dd>
+<dt>工具突然要收費／達到免費上限</dt><dd>換另一家免費工具，重貼脈絡卡和交辦卡（<a href="tools.html">工具表</a>在他手上）——順便讓他看到：卡是可攜的。</dd>
+<dt>你自己也解不了（工具異常、帳號問題）</dt><dd>換另一家工具先動起來；真的卡死，<b>舉手叫講師，別耗超過兩分鐘</b>。</dd>
+</dl>
+
+<h2>五、三不一要</h2>
+<ul>
+<li><b class="warn">不搶鍵盤</b>——指、唸、示範自己的手機都行，就是不碰學員的設備（長輩代貼除外，先問過）。</li>
+<li><b class="warn">不趕進度</b>——<b>走完一圈比成品漂亮重要。</b> 寧可成品粗糙，也要「計畫核可→檢查點→驗收」完整。晉級是選項，不是 KPI。</li>
+<li><b class="warn">不加故事</b>——小Q 故事的口徑<b>以 FB 貼文〈孩子的夢，AI 幫他接了起來〉為限</b>。爸爸那一面的細節不添不編：對話細節、花費、時數、心情，貼文沒寫的一律不補。何時揭曉主角在現場由講師決定，別搶梗。</li>
+<li><b class="pass">要學員自己說</b>——每次協助的收尾都是同一句：<span class="say">「所以，檢查點攔到了什麼？」</span>他說得出來，你的工作才算完成。</li>
+</ul>
+
+<h2>六、課前準備＋當天 9:00 到場對表</h2>
+
+<h3>課前</h3>
+<ol>
+<li><b>自己完整走一輪 L1 交辦卡</b>——不是讀過，是跑過。含<b>檢查點攔到錯的截圖存進手機</b>：巡場時「你看我的」比任何解釋都快。</li>
+<li>掃一遍<a href="index.html">公開站</a>的 <b>102 題卡三張</b>（<a href="card-level1.html">L1</a>／<a href="card-level2.html">L2</a>／<a href="card-level3.html">L3</a>）<b>＋<a href="tools.html">交辦檢查點工具表</a></b>（學員手機備援就是這個站）。</li>
+<li>提醒學員<b>帶 101 脈絡卡來</b>（手機備忘錄或紙本皆可）。課前 3 天群組訊息由講師統一發，你們在自己的小群再提一次。沒上過 101 的學員：兩三句自我介紹代替，不要卡在這裡。</li>
+</ol>
+
+<h3>當天 9:00 到場對表</h3>
+<ul>
+<li>跟講師對一次時間軸與廣播回報節點（<b class="pass">10:52／11:00／11:25／11:35</b>）。</li>
+<li>確認紙本：題卡 ×3＋交辦檢查點工具表，每人一套，白底 A4。</li>
+<li>認一下自己顧的區塊與分卡對象。<b>（第三位助教到位前，分區暫按兩區：貓科顧 L1 續磨＋第一次交辦區、億芸顧 L2/L3 晉級區；第三位到位後回三區制）</b></li>
+</ul>
+
+<h3>口徑紅線（照唸，不要改寫）</h3>
+<ul>
+<li>免費版措辭：<span class="say">「所有練習皆可在免費版完成。」</span>——「練習」不含收尾的講師示範。不要口誤講成「今天全部內容都免費」。</li>
+<li>必停紅線四項：<b class="warn">花錢、寄出、刪除、對外發佈——碰到一律停下來問。</b></li>
+<li>金句原句，零偏差：
+  <ul>
+  <li><b>「他交出去的是工作，沒交出去的是責任。」</b></li>
+  <li><b>「放手，但不放養。」</b>（Delegate, don't abdicate）</li>
+  </ul>
+</li>
+</ul>
+
+<p class="foot">助教手冊 v0.2（09-14 名冊更新）· v0.1 Producer 產製 09-06 · 2026/10/17 場 · 依 102_D1_RunSheet_v1.0 產製 · 有問題直接找中致</p>
+
+</body>
+</html>
