@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="light dark">
-<title>放手交給 AI — 講師 Slides v1.3</title>
+<title>放手交給 AI — 講師 Slides v1.4</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
   :root{
@@ -197,6 +197,9 @@
   body.talk .slide.staged.active:not(.revealed) .talkq em{font-style:normal;color:var(--teal);}
   body.talk .slide.staged.active:not(.revealed) .talkq small{display:block;font-weight:400;font-size:clamp(22px,1.25vw,24px);color:var(--faint);margin-top:2vh;letter-spacing:.1em;}
 
+  .mapclaim{text-align:center;font-family:'Noto Sans TC',sans-serif;font-size:clamp(30px,2.1vw,40px);font-weight:900;margin-top:1vh;}
+  .mapclaim b{color:var(--teal);}
+
   @media print{
     :root{color-scheme:only light;}
     .slide{display:flex;page-break-after:always;width:auto;height:96vh;}
@@ -205,7 +208,7 @@
   }
 
   /* embedded harness map */
-  .mapwrap{height:82vh;display:flex;align-items:center;justify-content:center;}
+  .mapwrap{max-height:86vh;height:82vh;display:flex;align-items:center;justify-content:center;}
   .mapwrap svg{height:100%;width:auto;max-width:100%;}
   text{font-family:'Noto Sans TC',sans-serif;fill:var(--ink);}
   .t-900{font-weight:900;}
@@ -341,11 +344,11 @@
   <div class="kicker">接下來 80 分鐘 · 全部動手</div>
   <h1>同一個練習，三種深度</h1>
   <div class="cards3">
-    <div><div class="lv">LEVEL 1 · 入門</div><b>交辦卡</b><p>把一件事完整交給 AI，走完交辦→檢查→驗收。</p></div>
+    <div><div class="lv">LEVEL 1 · 入門</div><b>交辦卡</b><p>把一件事完整交給 AI，走完交辦→檢查→驗收。<b>沒上過 101：照卡上四句首寫兩三行即可。</b></p></div>
     <div><div class="lv">LEVEL 2 · 進階</div><b>檢查點清單</b><p>為重複交辦的事設好回報與紅線。</p></div>
     <div><div class="lv">LEVEL 3 · 挑戰</div><b>團隊授權表</b><p>可自行做、須先問、絕不可做＋紅隊測試。</p></div>
   </div>
-  <div class="rulebar"><b>規則：</b>每個人都先做 Level 1——完整走一輪交辦循環。工具不限，<b>所有練習皆可在免費版完成</b>。</div>
+  <div class="rulebar"><b>規則：</b><b>現在只拿 L1</b>，其他三張先蓋著（11:10 再講）。每個人都先做 Level 1；工具不限，<b>所有練習皆可在免費版完成</b>。<br><b>用真任務、假資料：姓名、電話、名單、密碼、財務、醫療先去識別。</b></div>
   <div class="pagenum">9 / 13</div>
 </section>
 
@@ -494,6 +497,7 @@
   <text x="70" y="1137" class="t-faint" font-size="11">吞併分析（細框／粗框／治理框）、鷹架／圖紙框架與所有中文註解，皆為本課程另加，非 Jensen 原述。 · 課程涵蓋地圖 · 2026.07</text>
   <text x="490" y="1161" text-anchor="middle" class="t-faint" font-size="11">© 2026 林中致 Tom Lin · 版權所有</text>
 </svg></div>
+  <div class="mapclaim"><b>Model 負責推理；意圖、工具、行動與治理，由 Harness 承接。</b>工具會變——圖紙是人的。</div>
   <div class="pagenum">11 / 13</div>
 </section>
 
