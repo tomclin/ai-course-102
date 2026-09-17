@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="light dark">
-<title>放手交給 AI — 講師 Slides v1.2</title>
+<title>放手交給 AI — 講師 Slides v1.3</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
   :root{
@@ -187,10 +187,21 @@
   .specpills span{background:var(--wash);border:1px solid var(--hair);border-radius:999px;padding:.5vh 1em;font-size:clamp(22px,1.25vw,24px);font-weight:500;}
   .srcfoot{margin-top:2vh;font-size:clamp(20px,1.15vw,22px);color:var(--faint);}
 
+  /* 講述模式（?talk=1）：staged 頁第一拍只亮問句，按一下亮全頁 */
+  .talkq{display:none;}
+  body.talk .slide.staged.active:not(.revealed) > *:not(.talkq):not(.ladder-mini):not(.lvtag):not(.pagenum){display:none;}
+  body.talk .slide.staged.active:not(.revealed) .talkq{
+    display:block;font-family:'Noto Sans TC',sans-serif;font-weight:900;
+    font-size:clamp(44px,3.3vw,64px);line-height:1.4;margin-top:6vh;max-width:18em;
+  }
+  body.talk .slide.staged.active:not(.revealed) .talkq em{font-style:normal;color:var(--teal);}
+  body.talk .slide.staged.active:not(.revealed) .talkq small{display:block;font-weight:400;font-size:clamp(22px,1.25vw,24px);color:var(--faint);margin-top:2vh;letter-spacing:.1em;}
+
   @media print{
     :root{color-scheme:only light;}
     .slide{display:flex;page-break-after:always;width:auto;height:96vh;}
     .navhint{display:none;}
+    .talkq{display:none !important;}
   }
 
   /* embedded harness map */
@@ -264,9 +275,10 @@
 </section>
 
 <!-- 5 · 理論 壹：授權光譜 -->
-<section class="slide">
+<section class="slide staged">
   <div class="ladder-mini"><span class="on" style="height:18px"></span><span style="height:34px"></span><span style="height:50px"></span></div>
   <div class="lvtag">第一層 · 授權光譜</div>
+  <p class="talkq">放手，是<em>開關</em>，還是<em>刻度</em>？<small>（想 10 秒——按一下揭曉）</small></p>
   <h1>放手不是開關，是<em>十格光譜</em></h1>
   <div class="spec">
     <div class="specbar"><div class="on">1</div><div>2</div><div>3</div><div>4</div><div class="on">5</div><div>6</div><div class="on">7</div><div>8</div><div>9</div><div class="on">10</div></div>
@@ -279,9 +291,10 @@
 </section>
 
 <!-- 6 · 理論 貳：檢查點三型 -->
-<section class="slide">
+<section class="slide staged">
   <div class="ladder-mini"><span style="height:18px"></span><span class="on" style="height:34px"></span><span style="height:50px"></span></div>
   <div class="lvtag">第二層 · 檢查點</div>
+  <p class="talkq">你敢放到哪一格——<em>靠什麼站穩</em>？<small>（想 10 秒——按一下揭曉）</small></p>
   <h1>檢查點只有三種</h1>
   <p class="sub" style="margin-top:1vh">檢查點，是你在光譜 5–7 之間<strong>站穩</strong>的方法。</p>
   <div class="cards3">
@@ -294,9 +307,10 @@
 </section>
 
 <!-- 7 · 理論 參：責任邊界 -->
-<section class="slide">
+<section class="slide staged">
   <div class="ladder-mini"><span style="height:18px"></span><span style="height:34px"></span><span class="on" style="height:50px"></span></div>
   <div class="lvtag">第三層 · 責任邊界 · 猴子＝下一步的責任</div>
+  <p class="talkq">有沒有人把事交給 AI 之後，<em>反而更累</em>？<small>（想 10 秒——按一下揭曉）</small></p>
   <h1>猴子怎麼跳到你背上</h1>
   <div class="cards3">
     <div><div class="lv">一</div><b>「有個問題」</b><p>對方開口，猴子在他背上。</p></div>
@@ -509,10 +523,19 @@
 <script>
   const slides=[...document.querySelectorAll('.slide')];
   let i=0;
+  const talk=new URLSearchParams(location.search).has('talk');
+  if(talk) document.body.classList.add('talk');
+  function unrevealAll(){slides.forEach(s=>s.classList.remove('revealed'));}
+  function advance(){
+    const cur=slides[i];
+    if(talk&&cur.classList.contains('staged')&&!cur.classList.contains('revealed')){cur.classList.add('revealed');return;}
+    show(i+1);
+  }
   function show(n){
     i=Math.max(0,Math.min(slides.length-1,n));
     slides.forEach((s,k)=>s.classList.toggle('active',k===i));
-    history.replaceState(null,'','#'+i);
+    unrevealAll();
+    history.replaceState(null,'',location.search+'#'+i);
   }
   const h0=parseInt((location.hash||'').slice(1));
   if(Number.isFinite(h0)&&h0>0) show(h0);
@@ -521,14 +544,14 @@
   function hideHint(){ if(hint) hint.style.display='none'; }
   addEventListener('keydown',e=>{
     hideHint();
-    if(['ArrowRight','ArrowDown','PageDown',' '].includes(e.key)) show(i+1);
+    if(['ArrowRight','ArrowDown','PageDown',' '].includes(e.key)) advance();
     if(['ArrowLeft','ArrowUp','PageUp'].includes(e.key)) show(i-1);
     if(e.key==='Home') show(0);
     if(e.key==='End') show(slides.length-1);
   });
   addEventListener('click',e=>{
     hideHint();
-    if(e.clientX>innerWidth/2) show(i+1); else show(i-1);
+    if(e.clientX>innerWidth/2) advance(); else show(i-1);
   });
 </script>
 </body>
