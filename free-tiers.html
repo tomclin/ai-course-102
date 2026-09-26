@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+<title>免費版交辦天花板 · 放手交給 AI</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    color-scheme: light dark;
+    --paper:#F7F6F2; --surface:#FFFFFF; --ink:#17263B; --muted:#3D4A5C;
+    --faint:#677180; --teal:#2E7D6B; --seal:#B5432E; --hair:#D9D6CE; --wash:#EDF3F1;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --paper:#14181F; --surface:#1C222B; --ink:#E8E5DE; --muted:#B4BCC7;
+      --faint:#87919D; --teal:#4FA893; --seal:#D4664F; --hair:#2A3038; --wash:#1A2420;
+    }
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{background:var(--paper);}
+  body{color:var(--ink);font-family:'Noto Sans TC',sans-serif;font-size:16px;line-height:1.7;padding:28px 18px 44px;}
+  .sheet{max-width:920px;margin:0 auto;}
+  header{border-bottom:3px double var(--ink);padding-bottom:12px;margin-bottom:16px;}
+  h1{font-weight:900;font-size:26px;line-height:1.35;}
+  .sub{color:var(--muted);margin-top:6px;}
+  h2{font-size:19px;font-weight:700;color:var(--teal);margin:26px 0 10px;}
+  .spec{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin-top:8px;}
+  .spec div{background:var(--surface);border:1px solid var(--hair);border-radius:10px;padding:12px 14px;}
+  .spec b{display:block;font-size:15px;color:var(--seal);letter-spacing:.06em;}
+  .spec .rng{font-weight:900;font-size:22px;margin:2px 0;}
+  .spec p{font-size:14.5px;color:var(--muted);}
+  .spec div.today{border:2px solid var(--teal);}
+  table{width:100%;border-collapse:collapse;margin-top:8px;background:var(--surface);border:1px solid var(--hair);border-radius:10px;overflow:hidden;}
+  th{background:var(--wash);text-align:left;padding:8px 10px;font-size:14px;}
+  td{border-top:1px solid var(--hair);padding:9px 10px;vertical-align:top;font-size:14.5px;color:var(--muted);}
+  td.tool{font-weight:900;color:var(--ink);white-space:nowrap;}
+  td.tool small{display:block;font-weight:400;color:var(--faint);font-size:12px;}
+  td b{color:var(--ink);}
+  td .cap{font-weight:900;color:var(--teal);}
+  .redline{margin-top:16px;background:var(--wash);border-left:4px solid var(--seal);border-radius:0 8px 8px 0;padding:10px 14px;color:var(--muted);}
+  .redline b{color:var(--seal);}
+  .note{margin-top:14px;font-size:13.5px;color:var(--faint);}
+  .webnav{margin-top:18px;font-size:.92em;color:var(--faint);}
+  .webnav a{color:var(--teal);font-weight:700;text-decoration:none;}
+  footer{margin-top:22px;border-top:1px solid var(--hair);padding-top:10px;font-size:13px;color:var(--faint);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+  @media (max-width:640px){
+    table,thead,tbody,tr{display:block;}
+    thead{display:none;}
+    tr{border-top:2px solid var(--hair);padding:6px 0;}
+    td{display:block;border-top:none;padding:5px 10px;}
+    td[data-h]::before{content:attr(data-h)"　";font-weight:700;color:var(--ink);}
+  }
+  @media print{.webnav{display:none;} body{padding:0;}}
+</style>
+</head>
+<body>
+<div class="sheet">
+  <header>
+    <h1>免費版交辦天花板——各家能放手到光譜第幾格</h1>
+    <p class="sub">課堂那條授權光譜（1＝全都自己來 → 10＝全自動）套到你手上的免費工具，誠實地說：<strong>能到哪、卡在哪、為什麼</strong>。</p>
+  </header>
+
+  <h2>先對座標</h2>
+  <div class="spec">
+    <div><b>逐輪問答</b><div class="rng">≈ 2–4</div><p>你問它答，一步一步來。免費工具打開的原生狀態。</p></div>
+    <div class="today"><b>核可後完成一段（今天實作）</b><div class="rng">≈ 5</div><p>貼上交辦五欄，就把同一個免費工具<strong>徒手推到這一格</strong>：先列計畫→你核可→逐步執行→檢查點停下回報。</p></div>
+    <div><b>自動執行、定點回報</b><div class="rng">≈ 6–7</div><p>不用你顧著，做完自己回報。要的是排程／代理功能——四家都收在付費牆後，<strong>這正是課堂 demo 用付費工具的原因</strong>。</p></div>
+  </div>
+
+  <h2>四家免費方案對照（交辦視角）</h2>
+  <table>
+    <thead><tr><th>工具</th><th>徒手推到 ≈5 的做法</th><th>常設交辦（免每次重貼）</th><th>免費天花板</th><th>被鎖在付費牆後的 6–7</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="tool" data-h="工具">ChatGPT<small>chatgpt.com</small></td>
+        <td data-h="推到≈5">交辦五欄貼對話開頭，直接成立。</td>
+        <td data-h="常設">免費可建<b>「專案」</b>，五欄寫進專案指示。</td>
+        <td data-h="免費天花板"><span class="cap">≈ 5</span></td>
+        <td data-h="付費解鎖">排程任務（定時自動執行）需付費版。</td>
+      </tr>
+      <tr>
+        <td class="tool" data-h="工具">Gemini<small>gemini.google.com</small></td>
+        <td data-h="推到≈5">直接貼五欄。</td>
+        <td data-h="常設">免費可建<b>「Gem」</b>，五欄寫進 Gem 指令，開它即生效。</td>
+        <td data-h="免費天花板"><span class="cap">≈ 5</span><br><small>每日用量有上限</small></td>
+        <td data-h="付費解鎖">「排定動作」（定時自動執行）需付費版。</td>
+      </tr>
+      <tr>
+        <td class="tool" data-h="工具">Claude<small>claude.ai</small></td>
+        <td data-h="推到≈5">直接貼五欄。</td>
+        <td data-h="常設">免費可建<b>「Project」</b>放五欄（上限 5 個）。</td>
+        <td data-h="免費天花板"><span class="cap">≈ 5</span><br><small>額度每 5 小時計、浮動</small></td>
+        <td data-h="付費解鎖">更高額度與進階自動化功能在付費版。</td>
+      </tr>
+      <tr>
+        <td class="tool" data-h="工具">Copilot<small>copilot.microsoft.com</small></td>
+        <td data-h="推到≈5">直接貼五欄；沒有指令欄——補一句<b>「請記住：我交辦時一律先給計畫、核可後再逐步執行」</b>。</td>
+        <td data-h="常設">無常設指令欄位，每次交辦帶著五欄。</td>
+        <td data-h="免費天花板"><span class="cap">≈ 4–5</span><br><small>尖峰時段可能降速或換較簡單模型</small></td>
+        <td data-h="付費解鎖">Microsoft 365 訂閱者另有整合功能（如 Pages）。</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="redline"><b>兩條不變的底線：</b>①<b>所有練習皆可在免費版完成</b>——天花板 ≈5 就是今天要練的那一格，夠用。②<b>用真任務、假資料</b>：姓名、電話、名單、密碼、財務、醫療先去識別；花錢、寄出、刪除、對外發佈——碰到一律停下來問。</div>
+
+  <p class="note">一句話帶走：<b>差別不在你買了哪家，在你有沒有把五欄貼上去。</b>免費工具＋交辦五欄＝核可後執行（≈5）；要它自動跑、定點回報（6–7），才需要掏錢包——而且掏了錢包，五欄還是你的方向盤。</p>
+
+  <div class="webnav">⇦ <a href="tools.html">交辦檢查點工具表</a> · <a href="slides.html#9">三卡頁投影</a> · <a href="index.html">全部材料</a></div>
+
+  <footer>
+    <span>放手交給 AI · 實作工作坊 · 延伸指南</span>
+    <span>2026-09 查證 · 各家介面與額度常變動，開課前一週複測 · 以各官網現況為準</span>
+  </footer>
+</div>
+</body>
+</html>

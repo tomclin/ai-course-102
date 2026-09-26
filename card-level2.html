@@ -131,6 +131,9 @@
     .step,.trio div,.memo,.example,.loop,.advbox{break-inside:avoid;}
     @page{size:A4;margin:10mm 12mm;}
   }
+  .webnav{margin-top:14px;font-size:.9em;color:var(--faint,#677180);}
+  .webnav a{color:var(--teal,#2E7D6B);font-weight:700;text-decoration:none;}
+  @media print{.webnav{display:none;}}
 </style>
 </head>
 <body>
@@ -175,7 +178,7 @@
     <p><b>花錢 · 寄出 · 刪除 · 對外發佈</b>——任務碰到其中任何一項，一律停下來先問你。紅線不分大小事，寫進清單，每次交辦都帶著。</p>
   </div>
 
-  <p class="ptask"><b>想不到題目？</b>就用「每週小組／家庭通知」練：計畫核可＝先列要通知的事項；中途抽查＝寫完第一則先看；交付驗收＝時間地點核對無誤。跑完一輪，再換自己的。</p>
+  <p class="ptask"><button onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent).then(()=>this.textContent='已複製 ✓')" style="font:inherit;font-weight:700;color:var(--seal,#B5432E);background:none;border:1.5px solid currentColor;border-radius:6px;padding:1px 8px;cursor:pointer">一鍵複製整段交辦＋檢查點</button><span hidden>這是一件我會重複交辦的事。請照這份檢查點清單工作：①計畫核可——動工前先列出你打算怎麼做，我核可了再開始；②中途抽查——做完約定那一步先停下來給我看，我說繼續才繼續；③交付驗收——交件時逐條對照我給的標準。必停紅線：花錢、寄出、刪除、對外發佈，碰到任何一項一律停下來問我。開始前，先複誦一次以上檢查點與紅線。這次的任務：擬一份每週小組通知——計畫核可＝先列出要通知的事項給我看；中途抽查＝寫完第一則先停；交付驗收＝時間地點逐項核對。</span>　<b>想不到題目？</b>就用「每週小組／家庭通知」練：計畫核可＝先列要通知的事項；中途抽查＝寫完第一則先看；交付驗收＝時間地點核對無誤。跑完一輪，再換自己的。</p>
 
   <p style="font-size:.92em;color:var(--muted,#3D4A5C)"><b>用真任務、假資料：姓名、電話、名單、密碼、財務、醫療先去識別。</b></p>
   <div class="done">
@@ -185,6 +188,7 @@
 
   <div class="advbox"><b>進階挑戰</b>① 把這份清單併進你 101 的工作模板，變成可重用的「交辦模板」。② 為紅線設計一句 AI 必須複誦的確認句（例：「本任務不涉及花錢、寄出、刪除、對外，若涉及我會先停」）。③ 故意塞一個會踩紅線的變化題，測清單擋不擋得住。</div>
 
+    <div class="webnav">⇦ <a href="slides.html#9">三卡頁投影</a> · <a href="tools.html">交辦檢查點工具表</a> · 上一張：<a href="card-level1.html">L1</a> · 下一張：<a href="card-level3.html">L3 團隊授權表</a></div>
   <footer>
     <span>放手交給 AI · 實作工作坊 · 題卡 2／3</span>
     <span>任何 AI 工具皆可 · 免費版可完成</span>
