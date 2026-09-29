@@ -555,12 +555,12 @@
      確保必講元素（規則條/紅線）不被裁切。1080p 下 zoom=1，不影響已驗收版面。 */
   function fitSlide(){
     const s=slides[i]; if(!s) return;
-    s.style.zoom='';
+    s.style.zoom='';s.style.width=s.style.height='';
     requestAnimationFrame(()=>{
       let b=0,r=0;
-      s.querySelectorAll('*').forEach(el=>{const c=el.getBoundingClientRect();if(c.width&&c.height){if(c.bottom>b)b=c.bottom;if(c.right>r)r=c.right;}});
-      const z=Math.min(1,innerHeight/(b||1),innerWidth/(r||1));
-      if(z<0.995) s.style.zoom=Math.max(.5,z).toFixed(3);
+      s.querySelectorAll('*').forEach(el=>{if(el.closest('.pagenum'))return;const c=el.getBoundingClientRect();if(c.width&&c.height){if(c.bottom>b)b=c.bottom;if(c.right>r)r=c.right;}});
+      const z=Math.min(1,(innerHeight-24)/(b||1),(innerWidth-24)/(r||1));
+      if(z<0.995){const zz=Math.max(.5,z);s.style.zoom=zz.toFixed(3);s.style.width=(innerWidth/zz)+'px';s.style.height=(innerHeight/zz)+'px';}
     });
   }
   addEventListener('resize',fitSlide);
