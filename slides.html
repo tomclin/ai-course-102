@@ -541,7 +541,7 @@
   function unrevealAll(){slides.forEach(s=>s.classList.remove('revealed'));}
   function advance(){
     const cur=slides[i];
-    if(talk&&cur.classList.contains('staged')&&!cur.classList.contains('revealed')){cur.classList.add('revealed');return;}
+    if(talk&&cur.classList.contains('staged')&&!cur.classList.contains('revealed')){cur.classList.add('revealed');fitSlide();return;}
     show(i+1);
   }
   function show(n){
@@ -549,9 +549,23 @@
     slides.forEach((s,k)=>s.classList.toggle('active',k===i));
     unrevealAll();
     history.replaceState(null,'',location.search+'#'+i);
+    fitSlide();
   }
+  /* 低解析度保險絲：deck 版面錨定 1920×1080；視窗高度不足時整頁等比縮，
+     確保必講元素（規則條/紅線）不被裁切。1080p 下 zoom=1，不影響已驗收版面。 */
+  function fitSlide(){
+    const s=slides[i]; if(!s) return;
+    s.style.zoom='';
+    requestAnimationFrame(()=>{
+      let b=0,r=0;
+      s.querySelectorAll('*').forEach(el=>{const c=el.getBoundingClientRect();if(c.width&&c.height){if(c.bottom>b)b=c.bottom;if(c.right>r)r=c.right;}});
+      const z=Math.min(1,innerHeight/(b||1),innerWidth/(r||1));
+      if(z<0.995) s.style.zoom=Math.max(.5,z).toFixed(3);
+    });
+  }
+  addEventListener('resize',fitSlide);
   const h0=parseInt((location.hash||'').slice(1));
-  if(Number.isFinite(h0)&&h0>0) show(h0);
+  if(Number.isFinite(h0)&&h0>0) show(h0); else fitSlide();
   addEventListener('hashchange',()=>{const h=parseInt(location.hash.slice(1));if(Number.isFinite(h)&&h!==i)show(h);});
   const hint=document.querySelector('.navhint');
   function hideHint(){ if(hint) hint.style.display='none'; }
