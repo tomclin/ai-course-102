@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="light dark">
-<title>放手交給 AI — 講師 Slides v1.8</title>
+<title>放手交給 AI — 講師 Slides v1.8.1</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
   :root{
@@ -208,6 +208,7 @@
 
   .mapclaim{text-align:center;font-family:'Noto Sans TC',sans-serif;font-size:clamp(30px,2.1vw,40px);font-weight:900;margin-top:1vh;}
   .mapclaim b{color:var(--teal);}
+  .maphint{text-align:center;font-size:clamp(22px,1.25vw,24px);color:var(--faint);margin-top:.4vh;}
 
   @media print{
     :root{color-scheme:only light;}
@@ -378,7 +379,7 @@
 </section>
 <!-- 10b · 什麼是 Harness（嵌入地圖，harness 段用；不講透，只概念＋102 要點） -->
 <section class="slide">
-  <div class="mapwrap"><svg viewBox="0 0 980 1172" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Agent = Model + Harness 課程涵蓋地圖">
+  <div class="mapwrap"><a href="https://tomclin.github.io/ai-course-101/map.html" target="_blank" rel="noopener" style="display:contents"><svg viewBox="0 0 980 1172" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Agent = Model + Harness 課程涵蓋地圖">
   <defs>
     <marker id="ah" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
       <path d="M0,0 L8,4.5 L0,9 Z" fill="var(--ink)"/>
@@ -507,8 +508,9 @@
   <text x="70" y="1117" class="t-faint" font-size="11">基本架構（八格 ＋ Context→Observe→Reason→Act 迴圈 ＋ Model／Harness 之分）參考 Jensen Huang（NVIDIA）於 GTC Taipei 2026（2026-06-01）演講所示的 Agentic 框架重繪。</text>
   <text x="70" y="1137" class="t-faint" font-size="11">吞併分析（細框／粗框／治理框）、鷹架／圖紙框架與所有中文註解，皆為本課程另加，非 Jensen 原述。 · 課程涵蓋地圖 · 2026.07</text>
   <text x="490" y="1161" text-anchor="middle" class="t-faint" font-size="11">© 2026 林中致 Tom Lin · 版權所有</text>
-</svg></div>
+</svg></a></div>
   <div class="mapclaim"><b>Model 負責推理；意圖、工具、行動與治理，由 Harness 承接。</b>工具會變——圖紙是人的。</div>
+  <div class="maphint">點圖開全頁版逐格說明</div>
   <div class="pagenum">11 / 13</div>
 </section>
 
@@ -582,6 +584,7 @@
     if(e.key==='End') show(slides.length-1);
   });
   addEventListener('click',e=>{
+    if(e.target.closest('a')) return;
     hideHint();
     if(e.clientX>innerWidth/2) advance(); else show(i-1);
   });
