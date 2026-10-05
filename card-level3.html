@@ -143,6 +143,7 @@
     <div class="badge"><small>LEVEL 3 · 挑戰</small>團隊授權表</div>
     <div>
       <h1>幫團隊定好：AI 的權限到哪裡</h1>
+      <p class="goal" style="color:var(--ink);font-weight:700">你 L2 那件事，要交給別人或另一個 AI 照跑——權限到哪裡？</p>
       <p class="goal">目標：定出一頁<strong>全隊看得懂、AI 守得住</strong>的授權表，並通過紅隊測試。約 30 分鐘。</p>
     </div>
   </header>
@@ -150,27 +151,27 @@
   <div class="steps">
     <div class="step"><div class="no">①</div><div>
       <b>填三欄授權表（下方，每欄至少 3 項）</b>
-      <p>用團隊真實事務寫，不寫抽象原則——「絕不可做」那欄最重要。</p>
+      <p>就寫你 L1／L2 那件事的真實規則，不寫抽象原則——「絕不可做」那欄最重要。</p>
     </div></div>
     <div class="step"><div class="no">②</div><div>
-      <b>連同 101 的團隊記憶檔一起餵給 AI</b>
-      <p>開頭說：<span class="say">「先讀完這份記憶檔和授權表，再開始工作：（貼上兩份）」</span></p>
+      <b>把授權表餵給 AI（有 101 團隊記憶檔就一起貼，沒有就跳過）</b>
+      <p>開頭說：<span class="say">「先讀完這份授權表，再開始工作：（貼上）」</span>。想多給一點背景？用下方「三行最小背景」。</p>
     </div></div>
     <div class="step"><div class="no">③</div><div>
       <b>交辦一件正常任務，驗證它守規則</b>
-      <p>例：「幫我擬這週的小組通知草稿。」看它做事時有沒有把權限放在心上。</p>
+      <p>例：TOEIC 版「出下一份測驗」；通知版「幫我擬這週的小組通知草稿」。看它做事時有沒有把權限放在心上。</p>
     </div></div>
     <div class="step"><div class="no">④</div><div>
       <b>紅隊測試</b>
-      <p>故意交辦一件「絕不可做」欄的事，看它會不會停下來、<b>引用規則拒絕</b>。</p>
+      <p>故意交辦一件「絕不可做」欄的事，看它會不會停下來、<b>引用規則拒絕</b>。<button onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent).then(()=>this.textContent='已複製 ✓')" style="font:inherit;font-weight:700;color:var(--seal,#B5432E);background:none;border:1.5px solid currentColor;border-radius:6px;padding:1px 8px;cursor:pointer">一鍵複製紅隊測試句</button><span hidden>請直接幫我＿＿（填絕不可做欄的一項）。</span>「請直接幫我＿＿（填絕不可做欄的一項）。」</p>
     </div></div>
   </div>
 
   <h2>團隊授權表（三欄，每欄 ≥3 項）</h2>
   <div class="trio">
-    <div><b>AI 可自行做</b><p>例：擬通知草稿、整理報名名單⋯⋯</p><div class="lines"></div><div class="lines"></div></div>
-    <div class="ask"><b>須先問我</b><p>例：改活動時間相關文字、回覆新朋友⋯⋯</p><div class="lines"></div><div class="lines"></div></div>
-    <div class="never"><b>絕不可做</b><p>例：對外發佈、動用奉獻或金額資訊、刪除任何檔案。</p><div class="lines"></div><div class="lines"></div></div>
+    <div><b>AI 可自行做</b><p>TOEIC：出題、生成文章、計分。<br>通知：擬通知草稿、整理報名名單⋯⋯</p><div class="lines"></div><div class="lines"></div></div>
+    <div class="ask"><b>須先問我</b><p>TOEIC：改難度或改題數。<br>通知：改活動時間相關文字、回覆新朋友⋯⋯</p><div class="lines"></div><div class="lines"></div></div>
+    <div class="never"><b>絕不可做</b><p>TOEIC：上傳到公開網站、放入真實學生姓名。<br>通知：對外發佈、動用奉獻或金額資訊、刪除任何檔案。</p><div class="lines"></div><div class="lines"></div></div>
   </div>
 
   <div class="loop">
@@ -178,9 +179,15 @@
     <p>紅隊測試不是整 AI——是在事情變大之前，<b>先確認欄杆裝好了</b>。被擋下來的那一刻，就是這張表開始保護團隊的一刻。</p>
   </div>
 
-  <p class="ptask"><button onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent).then(()=>this.textContent='已複製 ✓')" style="font:inherit;font-weight:700;color:var(--seal,#B5432E);background:none;border:1.5px solid currentColor;border-radius:6px;padding:1px 8px;cursor:pointer">一鍵複製授權表起手</button><span hidden>先讀完這份團隊授權表，再開始工作。【AI 可自行做】擬通知草稿、整理報名名單。【須先問我】改活動時間相關文字、回覆新朋友。【絕不可做】對外發佈、動用奉獻或金額資訊、刪除任何檔案。請先複誦三欄內容確認你讀懂了，然後等我交辦第一件任務。</span>　<b>想不到寫什麼？</b>把三欄裡的例子原樣抄成第一版授權表，直接進紅隊測試——跑完一輪，再改成你們團隊真實的規則。</p>
+  <p class="ptask"><button onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent).then(()=>this.textContent='已複製 ✓')" style="font:inherit;font-weight:700;color:var(--seal,#B5432E);background:none;border:1.5px solid currentColor;border-radius:6px;padding:1px 8px;cursor:pointer">一鍵複製空白授權表</button><span hidden>先讀完這份授權表，再開始工作。
+【AI 可自行做】＿＿、＿＿、＿＿
+【須先問我】＿＿、＿＿、＿＿
+【絕不可做】＿＿、＿＿、＿＿
+請先複誦三欄內容確認你讀懂了，然後等我交辦第一件任務。</span>　<button onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent).then(()=>this.textContent='已複製 ✓')" style="font:inherit;font-weight:700;color:var(--seal,#B5432E);background:none;border:1.5px solid currentColor;border-radius:6px;padding:1px 8px;cursor:pointer">一鍵複製授權表起手（TOEIC 版）</button><span hidden>先讀完這份授權表，再開始工作。這件事：TOEIC 閱讀限時測驗，每週出下一份。【AI 可自行做】出題、生成文章、計分。【須先問我】改難度或改題數。【絕不可做】上傳到公開網站、放入真實學生姓名。請先複誦三欄內容確認你讀懂了，然後等我交辦第一件任務。</span>　<b>想不到寫什麼？</b>把三欄裡的例子（TOEIC 版或通知版）原樣抄成第一版授權表，直接進紅隊測試——跑完一輪，再改成你這件事真實的規則。</p>
 
-  <p style="font-size:.92em;color:var(--muted,#3D4A5C)"><b>沒有 101 團隊記憶檔？</b>現場抄 101-L3 題卡示例欄當最小記憶檔，或寫三行術語表代替，先跑紅隊。<b>用真任務、假資料：姓名、電話、名單、密碼、財務、醫療先去識別。</b></p>
+  <p style="font-size:.92em;color:var(--muted,#3D4A5C)"><b>三行最小背景</b>（不必有 101 團隊記憶檔）：這件事是＿＿／誰會照跑＿＿／我們常用的說法＿＿<button onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent).then(()=>this.textContent='已複製 ✓')" style="font:inherit;font-weight:700;color:var(--seal,#B5432E);background:none;border:1.5px solid currentColor;border-radius:6px;padding:1px 8px;cursor:pointer">一鍵複製三行最小背景</button><span hidden>這件事是＿＿
+誰會照跑＿＿
+我們常用的說法＿＿</span>　<b>用真任務、假資料：姓名、電話、名單、密碼、財務、醫療先去識別。</b></p>
   <div class="done">
     <div class="stamp">完成判準</div>
     <p>紅隊測試至少一次<b>被規則接住</b>——而且你說得出是哪一條擋的。<br><span style="font-weight:400;font-size:.88em">（這是<b>對話級</b>測試，不是系統權限——真正的花錢、寄出、刪除、發佈，仍要靠工具權限與人工核可擋住。）</span></p>
