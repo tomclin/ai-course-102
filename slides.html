@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="light dark">
-<title>放手交給 AI — 講師 Slides v1.8.1</title>
+<title>放手交給 AI — 講師 Slides v1.9</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
   :root{
@@ -238,6 +238,11 @@
   .arrow{stroke:var(--ink);stroke-width:1.8;fill:none;}
   .arrow-seal{stroke:var(--seal);stroke-width:1.8;fill:none;stroke-dasharray:5 4;}
   .hairline{stroke:var(--hair);stroke-width:1;}
+/* 課後問卷 QR 頁（v1.9）：沿固定錨點；QR 置中，1024×768 下 QR 本體 ≥360px */
+.qrbig{align-self:center;flex:0 0 auto;margin-top:3vh;background:var(--qrpaper);border-radius:10px;padding:12px;width:clamp(384px,50vh,560px);aspect-ratio:1;}
+.qrbig svg{display:block;width:100%;height:100%;}
+.qrurl{align-self:center;margin-top:2vh;font-size:clamp(28px,1.67vw,32px);font-weight:700;letter-spacing:.04em;}
+.qrnote{align-self:center;margin-top:.6vh;font-size:clamp(28px,1.67vw,32px);color:var(--muted);}
 .slide-img{background:#F7F6F2;padding:0;justify-content:center;align-items:center;}
 .slide-img img{max-width:100vw;max-height:100vh;width:auto;height:auto;object-fit:contain;display:block;}
 </style>
@@ -533,6 +538,15 @@
   <p class="sub" style="margin-top:3vh">今天教的檢查點、授權表——工具會變，但<strong>『你定義什麼叫做好』</strong>不會變。那是你的圖紙，不是 AI 的。</p>
   <p class="quote" style="margin-top:5vh;font-size:clamp(38px,2.9vw,56px)">放手，<span class="hl">但不放養</span>。</p>
   <div class="pagenum">13 / 13</div>
+</section>
+
+<!-- 14 · 課後問卷 QR（v1.9；118:00 從 #13 按→切此頁，散場不關） -->
+<section class="slide">
+  <h1>課後問卷 · <em>四分鐘</em></h1>
+  <div class="qrbig"><svg viewBox="0 0 33 33" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges" role="img" aria-label="課後問卷 QR：forms.gle/TmQ5EH8Q2ZNbhYom7"><rect width="33" height="33" fill="var(--qrpaper)"/><path d="M2 2h7v1h-7zM12 2h4v1h-4zM17 2h1v1h-1zM20 2h1v1h-1zM22 2h1v1h-1zM24 2h7v1h-7zM2 3h1v1h-1zM8 3h1v1h-1zM12 3h2v1h-2zM15 3h3v1h-3zM22 3h1v1h-1zM24 3h1v1h-1zM30 3h1v1h-1zM2 4h1v1h-1zM4 4h3v1h-3zM8 4h1v1h-1zM10 4h2v1h-2zM15 4h1v1h-1zM17 4h1v1h-1zM22 4h1v1h-1zM24 4h1v1h-1zM26 4h3v1h-3zM30 4h1v1h-1zM2 5h1v1h-1zM4 5h3v1h-3zM8 5h1v1h-1zM10 5h1v1h-1zM13 5h2v1h-2zM16 5h2v1h-2zM22 5h1v1h-1zM24 5h1v1h-1zM26 5h3v1h-3zM30 5h1v1h-1zM2 6h1v1h-1zM4 6h3v1h-3zM8 6h1v1h-1zM10 6h2v1h-2zM13 6h1v1h-1zM17 6h1v1h-1zM19 6h3v1h-3zM24 6h1v1h-1zM26 6h3v1h-3zM30 6h1v1h-1zM2 7h1v1h-1zM8 7h1v1h-1zM10 7h3v1h-3zM17 7h2v1h-2zM20 7h1v1h-1zM22 7h1v1h-1zM24 7h1v1h-1zM30 7h1v1h-1zM2 8h7v1h-7zM10 8h1v1h-1zM12 8h1v1h-1zM14 8h1v1h-1zM16 8h1v1h-1zM18 8h1v1h-1zM20 8h1v1h-1zM22 8h1v1h-1zM24 8h7v1h-7zM10 9h3v1h-3zM14 9h1v1h-1zM16 9h1v1h-1zM18 9h1v1h-1zM20 9h1v1h-1zM2 10h1v1h-1zM4 10h5v1h-5zM13 10h1v1h-1zM17 10h4v1h-4zM22 10h1v1h-1zM24 10h5v1h-5zM4 11h1v1h-1zM6 11h2v1h-2zM9 11h3v1h-3zM14 11h3v1h-3zM19 11h1v1h-1zM22 11h1v1h-1zM24 11h3v1h-3zM30 11h1v1h-1zM5 12h1v1h-1zM7 12h2v1h-2zM11 12h1v1h-1zM13 12h6v1h-6zM20 12h1v1h-1zM22 12h2v1h-2zM25 12h2v1h-2zM5 13h2v1h-2zM15 13h1v1h-1zM17 13h2v1h-2zM20 13h1v1h-1zM22 13h1v1h-1zM24 13h2v1h-2zM27 13h1v1h-1zM29 13h1v1h-1zM2 14h5v1h-5zM8 14h1v1h-1zM10 14h3v1h-3zM16 14h1v1h-1zM21 14h1v1h-1zM23 14h1v1h-1zM27 14h2v1h-2zM2 15h1v1h-1zM4 15h3v1h-3zM9 15h1v1h-1zM14 15h1v1h-1zM18 15h1v1h-1zM21 15h6v1h-6zM30 15h1v1h-1zM3 16h2v1h-2zM6 16h9v1h-9zM17 16h2v1h-2zM20 16h1v1h-1zM24 16h1v1h-1zM27 16h2v1h-2zM2 17h1v1h-1zM4 17h1v1h-1zM7 17h1v1h-1zM10 17h1v1h-1zM13 17h2v1h-2zM16 17h1v1h-1zM18 17h1v1h-1zM22 17h3v1h-3zM26 17h1v1h-1zM29 17h1v1h-1zM3 18h9v1h-9zM13 18h1v1h-1zM19 18h2v1h-2zM22 18h1v1h-1zM25 18h1v1h-1zM27 18h2v1h-2zM2 19h1v1h-1zM5 19h1v1h-1zM7 19h1v1h-1zM9 19h1v1h-1zM12 19h1v1h-1zM14 19h3v1h-3zM18 19h1v1h-1zM22 19h5v1h-5zM28 19h1v1h-1zM30 19h1v1h-1zM2 20h1v1h-1zM6 20h1v1h-1zM8 20h2v1h-2zM14 20h7v1h-7zM22 20h1v1h-1zM25 20h1v1h-1zM28 20h1v1h-1zM2 21h1v1h-1zM5 21h2v1h-2zM9 21h2v1h-2zM14 21h2v1h-2zM17 21h1v1h-1zM20 21h3v1h-3zM24 21h2v1h-2zM29 21h1v1h-1zM2 22h1v1h-1zM5 22h1v1h-1zM7 22h2v1h-2zM14 22h1v1h-1zM16 22h1v1h-1zM18 22h1v1h-1zM21 22h6v1h-6zM28 22h3v1h-3zM10 23h1v1h-1zM17 23h3v1h-3zM22 23h1v1h-1zM26 23h5v1h-5zM2 24h7v1h-7zM11 24h2v1h-2zM14 24h1v1h-1zM17 24h1v1h-1zM19 24h4v1h-4zM24 24h1v1h-1zM26 24h3v1h-3zM2 25h1v1h-1zM8 25h1v1h-1zM10 25h2v1h-2zM13 25h1v1h-1zM16 25h2v1h-2zM20 25h1v1h-1zM22 25h1v1h-1zM26 25h1v1h-1zM30 25h1v1h-1zM2 26h1v1h-1zM4 26h3v1h-3zM8 26h1v1h-1zM10 26h1v1h-1zM22 26h5v1h-5zM28 26h2v1h-2zM2 27h1v1h-1zM4 27h3v1h-3zM8 27h1v1h-1zM10 27h1v1h-1zM12 27h5v1h-5zM18 27h4v1h-4zM27 27h4v1h-4zM2 28h1v1h-1zM4 28h3v1h-3zM8 28h1v1h-1zM10 28h2v1h-2zM13 28h2v1h-2zM17 28h1v1h-1zM19 28h1v1h-1zM21 28h1v1h-1zM23 28h7v1h-7zM2 29h1v1h-1zM8 29h1v1h-1zM13 29h1v1h-1zM15 29h2v1h-2zM20 29h1v1h-1zM22 29h1v1h-1zM24 29h1v1h-1zM27 29h1v1h-1zM29 29h1v1h-1zM2 30h7v1h-7zM10 30h3v1h-3zM14 30h4v1h-4zM19 30h1v1h-1zM21 30h1v1h-1zM23 30h1v1h-1zM25 30h2v1h-2zM28 30h1v1h-1z" fill="var(--qrink)"/></svg></div>
+  <p class="qrurl">forms.gle/TmQ5EH8Q2ZNbhYom7</p>
+  <p class="qrnote">不方便用手機？助教有紙本</p>
+  <div class="pagenum">放手交給 AI</div>
 </section>
 
 <!-- 15 · 開場掛圖（開課前按 End 掛著；10:00 按 Home 回封面）＝101–103 通用文明演進開場圖（Tom 裁 2026-09-30） -->
