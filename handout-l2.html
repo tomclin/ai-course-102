@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+<title>檢查點清單 L2 說明</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    color-scheme: light dark;
+    --paper:#F7F6F2;
+    --surface:#FFFFFF;
+    --ink:#17263B;
+    --muted:#3D4A5C;
+    --faint:#677180;
+    --teal:#2E7D6B;
+    --seal:#B5432E;
+    --hair:#D9D6CE;
+    --on-accent:#FDFBF7;
+    --wash:#EDF3F1;
+    --qrpaper:#FFFFFF;--qrink:#000000;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --paper:#14181F;--surface:#1C222B;--ink:#E8E5DE;--muted:#B4BCC7;--faint:#87919D;
+      --teal:#4FA893;--seal:#D4664F;--hair:#2A3038;--on-accent:#16100E;--wash:#1A2420;
+      --qrpaper:#FFFFFF;--qrink:#000000;
+    }
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{background:var(--paper);}
+  body{color:var(--ink);font-family:'Noto Sans TC',sans-serif;font-size:16px;line-height:1.65;padding:28px 20px 36px;}
+  .sheet{max-width:760px;margin:0 auto;}
+  header{display:flex;align-items:center;gap:16px;border-bottom:3px double var(--ink);padding-bottom:12px;}
+  .badge{background:var(--teal);color:var(--on-accent);font-weight:700;font-size:16px;letter-spacing:.08em;text-align:center;
+    padding:10px 14px;border-radius:4px;transform:rotate(-2deg);line-height:1.35;white-space:nowrap;}
+  .badge small{display:block;font-size:13px;letter-spacing:.28em;}
+  .ttl{flex:1;}
+  h1{font-weight:900;font-size:28px;line-height:1.3;}
+  .sub{color:var(--muted);font-size:15px;}
+  .qr{flex:0 0 auto;text-align:center;font-size:13px;color:var(--muted);}
+  .qr svg{display:block;width:28mm;height:28mm;}
+  h2{font-weight:700;font-size:18px;margin:16px 0 4px;color:var(--teal);}
+  p,li{font-size:16px;}
+  .k{font-weight:700;}
+  ol,ul{padding-left:1.4em;}
+  li+li{margin-top:2px;}
+  dl{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;}
+  dt{font-weight:700;color:var(--seal);white-space:nowrap;}
+  .pair{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px;}
+  .pair div{background:var(--wash);border-radius:8px;padding:8px 12px;}
+  .pair b{display:block;}
+  .fine{margin-top:16px;font-size:13px;color:var(--faint);border-top:1px solid var(--hair);padding-top:6px;}
+  @media (max-width:560px){ .pair{grid-template-columns:1fr;} header{flex-wrap:wrap;} }
+  @media print{
+    :root{color-scheme:only light;}
+    html,body{background:var(--surface);}
+    body{padding:0;}
+    .sheet{max-width:none;}
+    @page{size:A4;margin:14mm 16mm;}
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+  <header>
+    <div class="badge"><small>LEVEL 2 · 進階</small>檢查點清單</div>
+    <div class="ttl">
+      <h1>為重複交辦的事，設好檢查點</h1>
+      <p class="sub">檢查點清單說明 · 放手交給 AI 實作工作坊 · 題卡 2／3</p>
+    </div>
+    <div class="qr"><svg viewBox="0 0 37 37" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges" aria-hidden="true"><rect width="37" height="37" fill="var(--qrpaper)"/><path d="M2 2h7v1h-7zM11 2h5v1h-5zM18 2h5v1h-5zM25 2h1v1h-1zM28 2h7v1h-7zM2 3h1v1h-1zM8 3h1v1h-1zM12 3h1v1h-1zM14 3h5v1h-5zM20 3h1v1h-1zM22 3h3v1h-3zM26 3h1v1h-1zM28 3h1v1h-1zM34 3h1v1h-1zM2 4h1v1h-1zM4 4h3v1h-3zM8 4h1v1h-1zM10 4h3v1h-3zM14 4h2v1h-2zM17 4h2v1h-2zM20 4h1v1h-1zM22 4h3v1h-3zM28 4h1v1h-1zM30 4h3v1h-3zM34 4h1v1h-1zM2 5h1v1h-1zM4 5h3v1h-3zM8 5h1v1h-1zM10 5h1v1h-1zM12 5h2v1h-2zM16 5h1v1h-1zM18 5h2v1h-2zM24 5h3v1h-3zM28 5h1v1h-1zM30 5h3v1h-3zM34 5h1v1h-1zM2 6h1v1h-1zM4 6h3v1h-3zM8 6h1v1h-1zM10 6h1v1h-1zM13 6h2v1h-2zM17 6h1v1h-1zM21 6h2v1h-2zM25 6h2v1h-2zM28 6h1v1h-1zM30 6h3v1h-3zM34 6h1v1h-1zM2 7h1v1h-1zM8 7h1v1h-1zM10 7h2v1h-2zM14 7h2v1h-2zM17 7h4v1h-4zM23 7h1v1h-1zM26 7h1v1h-1zM28 7h1v1h-1zM34 7h1v1h-1zM2 8h7v1h-7zM10 8h1v1h-1zM12 8h1v1h-1zM14 8h1v1h-1zM16 8h1v1h-1zM18 8h1v1h-1zM20 8h1v1h-1zM22 8h1v1h-1zM24 8h1v1h-1zM26 8h1v1h-1zM28 8h7v1h-7zM10 9h1v1h-1zM13 9h2v1h-2zM16 9h2v1h-2zM20 9h5v1h-5zM2 10h1v1h-1zM4 10h5v1h-5zM12 10h6v1h-6zM19 10h4v1h-4zM24 10h1v1h-1zM26 10h1v1h-1zM28 10h5v1h-5zM2 11h6v1h-6zM10 11h1v1h-1zM14 11h1v1h-1zM20 11h3v1h-3zM25 11h1v1h-1zM28 11h2v1h-2zM31 11h4v1h-4zM4 12h2v1h-2zM8 12h1v1h-1zM12 12h2v1h-2zM17 12h2v1h-2zM23 12h2v1h-2zM30 12h1v1h-1zM32 12h2v1h-2zM2 13h4v1h-4zM7 13h1v1h-1zM9 13h3v1h-3zM14 13h1v1h-1zM16 13h2v1h-2zM20 13h1v1h-1zM23 13h1v1h-1zM25 13h2v1h-2zM28 13h1v1h-1zM30 13h3v1h-3zM34 13h1v1h-1zM2 14h2v1h-2zM5 14h1v1h-1zM8 14h2v1h-2zM11 14h1v1h-1zM13 14h2v1h-2zM19 14h1v1h-1zM21 14h1v1h-1zM24 14h1v1h-1zM26 14h1v1h-1zM30 14h2v1h-2zM3 15h2v1h-2zM7 15h1v1h-1zM9 15h1v1h-1zM11 15h11v1h-11zM25 15h1v1h-1zM28 15h2v1h-2zM32 15h3v1h-3zM3 16h3v1h-3zM7 16h3v1h-3zM11 16h2v1h-2zM15 16h2v1h-2zM19 16h1v1h-1zM24 16h1v1h-1zM26 16h4v1h-4zM31 16h1v1h-1zM33 16h1v1h-1zM2 17h1v1h-1zM4 17h1v1h-1zM7 17h1v1h-1zM9 17h2v1h-2zM12 17h2v1h-2zM18 17h1v1h-1zM20 17h2v1h-2zM23 17h1v1h-1zM25 17h5v1h-5zM31 17h2v1h-2zM2 18h1v1h-1zM5 18h5v1h-5zM12 18h1v1h-1zM14 18h1v1h-1zM19 18h1v1h-1zM26 18h2v1h-2zM29 18h2v1h-2zM34 18h1v1h-1zM4 19h3v1h-3zM10 19h2v1h-2zM13 19h1v1h-1zM16 19h1v1h-1zM18 19h6v1h-6zM25 19h1v1h-1zM27 19h3v1h-3zM31 19h4v1h-4zM2 20h1v1h-1zM4 20h9v1h-9zM17 20h2v1h-2zM23 20h2v1h-2zM27 20h4v1h-4zM32 20h2v1h-2zM3 21h3v1h-3zM7 21h1v1h-1zM11 21h2v1h-2zM14 21h4v1h-4zM22 21h3v1h-3zM27 21h7v1h-7zM2 22h2v1h-2zM5 22h1v1h-1zM7 22h2v1h-2zM11 22h1v1h-1zM15 22h5v1h-5zM22 22h1v1h-1zM24 22h2v1h-2zM27 22h1v1h-1zM30 22h2v1h-2zM33 22h1v1h-1zM2 23h1v1h-1zM6 23h2v1h-2zM11 23h1v1h-1zM14 23h2v1h-2zM17 23h1v1h-1zM19 23h3v1h-3zM24 23h2v1h-2zM28 23h2v1h-2zM31 23h2v1h-2zM34 23h1v1h-1zM2 24h1v1h-1zM4 24h3v1h-3zM8 24h1v1h-1zM10 24h3v1h-3zM16 24h3v1h-3zM20 24h1v1h-1zM24 24h1v1h-1zM27 24h1v1h-1zM31 24h3v1h-3zM2 25h1v1h-1zM4 25h4v1h-4zM10 25h1v1h-1zM14 25h1v1h-1zM17 25h1v1h-1zM22 25h2v1h-2zM26 25h1v1h-1zM29 25h1v1h-1zM32 25h1v1h-1zM2 26h1v1h-1zM4 26h2v1h-2zM7 26h6v1h-6zM16 26h2v1h-2zM19 26h1v1h-1zM21 26h2v1h-2zM24 26h1v1h-1zM26 26h5v1h-5zM34 26h1v1h-1zM10 27h2v1h-2zM13 27h1v1h-1zM16 27h1v1h-1zM18 27h6v1h-6zM26 27h1v1h-1zM30 27h1v1h-1zM32 27h3v1h-3zM2 28h7v1h-7zM11 28h1v1h-1zM15 28h1v1h-1zM17 28h2v1h-2zM22 28h1v1h-1zM24 28h3v1h-3zM28 28h1v1h-1zM30 28h1v1h-1zM32 28h2v1h-2zM2 29h1v1h-1zM8 29h1v1h-1zM10 29h2v1h-2zM15 29h1v1h-1zM18 29h1v1h-1zM20 29h1v1h-1zM23 29h1v1h-1zM25 29h2v1h-2zM30 29h5v1h-5zM2 30h1v1h-1zM4 30h3v1h-3zM8 30h1v1h-1zM10 30h3v1h-3zM15 30h2v1h-2zM20 30h2v1h-2zM24 30h1v1h-1zM26 30h6v1h-6zM33 30h2v1h-2zM2 31h1v1h-1zM4 31h3v1h-3zM8 31h1v1h-1zM10 31h3v1h-3zM15 31h9v1h-9zM25 31h1v1h-1zM27 31h1v1h-1zM30 31h2v1h-2zM33 31h2v1h-2zM2 32h1v1h-1zM4 32h3v1h-3zM8 32h1v1h-1zM10 32h1v1h-1zM13 32h3v1h-3zM19 32h1v1h-1zM22 32h1v1h-1zM24 32h2v1h-2zM28 32h2v1h-2zM31 32h2v1h-2zM2 33h1v1h-1zM8 33h1v1h-1zM11 33h3v1h-3zM16 33h1v1h-1zM18 33h1v1h-1zM22 33h3v1h-3zM30 33h1v1h-1zM32 33h1v1h-1zM2 34h7v1h-7zM10 34h2v1h-2zM13 34h2v1h-2zM19 34h2v1h-2zM24 34h6v1h-6zM31 34h1v1h-1zM33 34h1v1h-1z" fill="var(--qrink)"/></svg>掃碼開卡</div>
+  </header>
+
+  <h2>1　這張卡教什麼</h2>
+  <p>L1 跑過一輪，檢查點是臨時想的。L2 把它寫成<span class="k">固定清單</span>：計畫核可、中途抽查、交付驗收三型各一條，加四條必停紅線。往後同一件事每次交辦都帶著，開工前先要 AI 複誦一次。完成＝實測一輪，清單攔下一件你沒料到的事，或完整跑通。</p>
+
+  <h2>2　兩條路怎麼選</h2>
+  <div class="pair">
+    <div><b>A　跑範例</b>L1 走 A 就接著走 A：小Q 的 TOEIC 測驗做下一份，換 3 篇新文章，清單已寫好。整段貼在 L1 同一個對話裡。</div>
+    <div><b>B　做自己的事</b>L1 做自己的事就接著做：同一件事的下一次，空白常設清單自己填。那件只做一次，就換同類的下一件。想不到？家裡的事就像交代居服員：每週帶爸媽回診、確認用藥。</div>
+  </div>
+  <p style="margin-top:6px">兩條路都不換題：同一件事，做深一層。</p>
+
+  <h2>3　操作三步</h2>
+  <ol>
+    <li><span class="k">寫成固定清單</span>：三型檢查點從 L1 抬過來，加必停紅線。</li>
+    <li><span class="k">檢查點放對位置</span>：動工前看計畫、第一份做完先停、交件時逐條對標準。三型缺一，就有一段沒人看。</li>
+    <li><span class="k">實測驗收</span>：用這件事的下一次跑一輪，看清單有沒有真的攔到東西。</li>
+  </ol>
+  <p>AI 跳過檢查點，就叫它停，先複誦清單再做。必停：花錢、寄出、刪除、對外發佈。個資先去識別。</p>
+
+  <h2>4　按鈕裡裝什麼（網頁版一鍵複製）</h2>
+  <dl>
+    <dt>整段交辦＋檢查點</dt><dd>小Q 示例下一份：三型檢查點與紅線都寫好，結尾要 AI 先複誦。</dd>
+    <dt>空白常設清單</dt><dd>三型檢查點＋紅線的填空範本，「往後每次照這份做」。填空即可交辦自己的事。</dd>
+    <dt>居服員版清單</dt><dd>同一位居服員的每週檢查清單：藥盒分好、血壓血糖量完先回報，對照醫生交代的目標；不肯吃藥、沒按時吃、數字不對，當天告訴你；多花錢先問。</dd>
+  </dl>
+
+  <p class="fine">任何 AI 工具皆可 · 免費版可完成 · 各工具介面可能不同 · tomclin.github.io/ai-course-102/card-level2.html</p>
+</div>
+</body>
+</html>

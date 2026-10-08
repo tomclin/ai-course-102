@@ -9,16 +9,16 @@
 <style>
   :root{
     color-scheme: light dark;
-    --paper:#F7F6F2;
+    --paper:#F7F6F2;   /* 紙白 */
     --surface:#FFFFFF;
-    --ink:#17263B;
+    --ink:#17263B;     /* 墨藍 */
     --muted:#3D4A5C;
     --faint:#677180;
-    --teal:#2E7D6B;
-    --seal:#B5432E;
+    --teal:#2E7D6B;    /* 青碧 */
+    --seal:#B5432E;    /* 印章紅 */
     --hair:#D9D6CE;
     --on-accent:#FDFBF7;
-    --wash:#EDF3F1;
+    --wash:#EDF3F1;    /* teal-tinted panel */
   }
   @media (prefers-color-scheme: dark){
     :root{
@@ -36,107 +36,58 @@
   }
   *{margin:0;padding:0;box-sizing:border-box;}
   html,body{background:var(--paper);}
-  body{
-    color:var(--ink);
-    font-family:'Noto Sans TC',sans-serif;
-    font-size:16px;line-height:1.6;
-    padding:28px 20px 36px;
-  }
+  body{color:var(--ink);font-family:'Noto Sans TC',sans-serif;font-size:16px;line-height:1.6;padding:28px 20px 36px;}
   .sheet{max-width:820px;margin:0 auto;}
 
-  header{display:flex;align-items:flex-start;gap:16px;border-bottom:3px double var(--ink);padding-bottom:14px;}
-  .badge{
-    background:var(--teal);color:var(--on-accent);
-    font-family:'Noto Sans TC',sans-serif;font-weight:700;
-    font-size:16px;letter-spacing:.08em;text-align:center;
-    padding:10px 14px;border-radius:4px;transform:rotate(-2deg);
-    line-height:1.35;white-space:nowrap;
-  }
+  header{display:flex;align-items:center;gap:16px;border-bottom:3px double var(--ink);padding-bottom:14px;}
+  .badge{background:var(--teal);color:var(--on-accent);font-weight:700;font-size:16px;letter-spacing:.08em;text-align:center;
+    padding:10px 14px;border-radius:4px;transform:rotate(-2deg);line-height:1.35;white-space:nowrap;}
   .badge small{display:block;font-size:13px;letter-spacing:.28em;}
-  h1{font-family:'Noto Sans TC',sans-serif;font-weight:900;font-size:28px;line-height:1.3;}
-  .goal{color:var(--muted);font-size:16px;margin-top:4px;}
-  .goal strong{color:var(--teal);}
-  .life{color:var(--muted);font-size:15px;margin-top:2px;}
+  h1{font-weight:900;font-size:28px;line-height:1.3;}
+  .time{color:var(--muted);font-size:15px;}
 
-  .steps{margin-top:16px;display:grid;gap:10px;}
-  .step{
-    display:grid;grid-template-columns:44px 1fr;gap:12px;
-    background:var(--surface);border:1px solid var(--hair);border-radius:8px;
-    padding:12px 14px;
-  }
-  .no{font-family:'Noto Sans TC',sans-serif;font-weight:900;font-size:22px;color:var(--teal);line-height:1.2;}
-  .step b{font-size:16px;}
-  .step p{font-size:16px;color:var(--muted);margin-top:2px;}
-  .step .say{color:var(--seal);font-weight:500;}
+  section{margin-top:18px;}
+  h2{font-weight:700;font-size:18px;margin-bottom:8px;display:flex;align-items:center;gap:8px;}
+  h2 .n{color:var(--on-accent);background:var(--teal);font-size:15px;font-weight:700;border-radius:50%;width:26px;height:26px;display:inline-flex;align-items:center;justify-content:center;}
+  .teach{font-size:18px;font-weight:500;}
+  .teach b{color:var(--teal);}
+  .teach small{display:block;font-size:15px;color:var(--muted);font-weight:400;}
 
-  h2{
-    font-family:'Noto Sans TC',sans-serif;font-weight:700;font-size:18px;
-    margin:18px 0 8px;display:flex;align-items:center;gap:8px;
-  }
-  h2::before{content:"";width:20px;height:3px;background:var(--teal);}
+  ol.how{list-style:none;display:grid;gap:8px;counter-reset:s;}
+  ol.how li{counter-increment:s;display:grid;grid-template-columns:32px 1fr;gap:8px;background:var(--surface);border:1px solid var(--hair);border-radius:8px;padding:8px 12px;}
+  ol.how li::before{content:counter(s);font-weight:900;font-size:22px;color:var(--teal);line-height:1.2;}
+  ol.how small{display:block;font-size:15px;color:var(--muted);}
+  .stuck{margin-top:8px;font-size:15px;color:var(--muted);}
+  .stuck b{color:var(--ink);}
+  .line{margin-top:4px;font-size:15px;color:var(--seal);font-weight:500;}
 
-  .trio{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;}
-  .trio div{
-    background:var(--wash);border:1px solid var(--hair);border-radius:8px;
-    padding:12px 14px;
-  }
-  .trio b{display:block;font-size:16px;color:var(--teal);margin-bottom:4px;}
-  .trio p{font-size:15px;color:var(--muted);}
-  .trio small{color:var(--teal);font-weight:700;font-size:.9em;}
-  .lines{border-bottom:1px solid var(--faint);height:30px;}
-  .lines + .lines{margin-top:2px;}
+  .paths{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  .path{background:var(--surface);border:1px solid var(--hair);border-radius:8px;padding:10px 14px;}
+  .path.a{border:2px solid var(--teal);}
+  .path h3{font-size:16px;font-weight:700;}
+  .path h3 span{color:var(--teal);font-weight:900;margin-right:4px;}
+  .path p{font-size:15px;color:var(--muted);margin-top:6px;}
+  .path .go{margin-top:8px;}
+  .both{margin-top:8px;font-size:15px;color:var(--muted);}
+  .cp{font:inherit;font-weight:700;color:var(--seal);background:none;border:1.5px solid currentColor;border-radius:6px;padding:2px 10px;cursor:pointer;}
+  .printonly{display:none;}
 
-  .loop{
-    margin-top:14px;background:var(--surface);border-left:4px solid var(--seal);
-    border-radius:0 8px 8px 0;padding:12px 16px;
-  }
-  .loop .tag{font-size:13px;letter-spacing:.2em;color:var(--seal);font-weight:700;margin-bottom:4px;}
-  .loop p{font-size:16px;color:var(--muted);}
-  .loop b{color:var(--seal);}
+  .fine{margin-top:14px;font-size:13px;color:var(--faint);border-top:1px solid var(--hair);padding-top:6px;}
+  .webnav{margin-top:10px;font-size:15px;color:var(--faint);}
+  .webnav a{color:var(--teal);font-weight:700;text-decoration:none;}
 
-  .done{
-    margin-top:16px;display:flex;gap:12px;align-items:center;
-    border:2px solid var(--seal);border-radius:8px;padding:12px 16px;
-  }
-  .done .stamp{color:var(--seal);font-family:'Noto Sans TC',sans-serif;font-weight:900;font-size:18px;white-space:nowrap;}
-  .done p{font-size:16px;}
-
-  .ptask{margin-top:10px;font-size:15px;color:var(--muted);}
-  .ptask b{color:var(--seal);}
-  .advbox{margin-top:12px;background:var(--wash);border:1px dashed var(--teal);border-radius:8px;padding:10px 14px;font-size:15px;color:var(--muted);}
-  .advbox b{color:var(--teal);margin-right:8px;}
-  footer{margin-top:14px;font-size:13px;color:var(--faint);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;}
-
-  @media (max-width:600px){.trio{grid-template-columns:1fr;}}
+  @media (max-width:560px){ .paths{grid-template-columns:1fr;} }
   @media print{
     :root{color-scheme:only light;}
-    body{padding:0;font-size:14px;line-height:1.45;}
+    html,body{background:var(--surface);}
+    body{padding:0;}
     .sheet{max-width:none;}
-    header{padding-bottom:8px;}
-    h1{font-size:22px;}
-    .goal{font-size:14px;}
-    .life{font-size:13px;margin-top:1px;}
-    .badge{font-size:14px;padding:8px 12px;}
-    .steps{margin-top:10px;gap:6px;}
-    .step{padding:7px 12px;}
-    .step b{font-size:14.5px;}
-    .step p{font-size:13.5px;}
-    h2{margin:10px 0 6px;font-size:16px;}
-    .trio div,.memo{padding:9px 12px;}
-    .trio p,.memo .row p{font-size:13px;}
-    .lines{height:21px;}
-    .example,.loop{margin-top:8px;padding:8px 14px;}
-    .example p,.loop p{font-size:13.5px;}
-    .done{margin-top:8px;padding:8px 14px;}
-    .done p{font-size:13.5px;}
-    .advbox{margin-top:8px;padding:8px 12px;font-size:13px;}
-    footer{margin-top:6px;font-size:11px;}
-    .step,.trio div,.memo,.example,.loop,.advbox{break-inside:avoid;}
-    @page{size:A4;margin:10mm 12mm;}
+    section{margin-top:12px;}
+    .cp,.webnav{display:none;}
+    .printonly{display:block;font-size:16px;font-weight:700;color:var(--seal);border:1.5px dashed var(--seal);border-radius:8px;padding:8px 12px;}
+    .path,ol.how li{break-inside:avoid;}
+    @page{size:A4;margin:12mm 14mm;}
   }
-  .webnav{margin-top:14px;font-size:.9em;color:var(--faint,#677180);}
-  .webnav a{color:var(--teal,#2E7D6B);font-weight:700;text-decoration:none;}
-  @media print{.webnav{display:none;}}
 </style>
 </head>
 <body>
@@ -146,62 +97,55 @@
     <div class="badge"><small>LEVEL 2 · 進階</small>檢查點清單</div>
     <div>
       <h1>為重複交辦的事，設好檢查點</h1>
-      <p class="goal">目標：做出一份<strong>下次交辦直接沿用</strong>的檢查點清單，並用真實任務實測。約 30 分鐘。</p>
-      <p class="life">就像居服員每週固定帶爸媽回診——一張固定清單，每次照走。</p>
+      <p class="time">約 30 分鐘</p>
     </div>
   </header>
 
-  <div class="steps">
-    <div class="step"><div class="no">①</div><div>
-      <b>就用 L1 剛跑完的那件事（或同類的下一件）</b>
-      <p>不換題，是把它做深。L1 那件是一次性的？就用同類的下一件（例：這次會議記錄→下次會議記錄）。</p>
-    </div></div>
-    <div class="step"><div class="no">②</div><div>
-      <b>設計三型檢查點（下方三欄，各填一欄）</b>
-      <p>L1 交辦卡上已經寫過這三欄——直接抬過來。三型都要有，缺一型就有一段沒人看。</p>
-    </div></div>
-    <div class="step"><div class="no">③</div><div>
-      <b>加「必停紅線」</b>
-      <p>見下方紅線條——碰到任何一項，<span class="say">一律停下來問你</span>，沒有例外。</p>
-    </div></div>
-    <div class="step"><div class="no">④</div><div>
-      <b>用真實任務實測一輪</b>
-      <p>用這件事的下一次：把清單連同交辦一起貼給 AI，跑完整一輪，看檢查點有沒有真的攔到東西。</p>
-    </div></div>
-  </div>
+  <section>
+    <h2><span class="n">1</span>教什麼</h2>
+    <p class="teach">把 L1 那件事的檢查點，寫成<b>每次照走的固定清單</b>：計畫核可、中途抽查、交付驗收，加必停紅線。<small>完成＝實測一輪，清單攔下一件你沒料到的事，或完整跑通。</small></p>
+  </section>
 
-  <h2>三型檢查點（各填一欄）</h2>
-  <div class="trio">
-    <div><b>一、計畫核可</b><p>動工前，先看它的計畫。這件事我要核可什麼？<br><small>↑ 從 L1 第 2 欄抬過來</small></p><div class="lines"></div></div>
-    <div><b>二、中途抽查</b><p>做到哪一步，要停下來給我看？<br><small>↑ 從 L1 第 3 欄抬過來</small></p><div class="lines"></div></div>
-    <div><b>三、交付驗收</b><p>成品交來，我拿什麼標準驗？<br><small>↑ 從 L1 第 5 欄抬過來</small></p><div class="lines"></div></div>
-  </div>
-
-  <div class="loop">
-    <div class="tag">必停紅線 · 四項</div>
-    <p><b>花錢 · 寄出 · 刪除 · 對外發佈</b>——任務碰到其中任何一項，一律停下來先問你。紅線不分大小事，寫進清單，每次交辦都帶著。</p>
-  </div>
-
-  <p class="ptask"><button onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent).then(()=>this.textContent='已複製 ✓')" style="font:inherit;font-weight:700;color:var(--seal,#B5432E);background:none;border:1.5px solid currentColor;border-radius:6px;padding:1px 8px;cursor:pointer">一鍵複製空白常設清單</button><span hidden>沿用我剛才交辦的那件事，這是它的常設檢查點清單，往後每次都照這份做：
+  <section>
+    <h2><span class="n">2</span>怎麼走：同一件事，做下一份</h2>
+    <div class="paths">
+      <div class="path a">
+        <h3><span>A</span>跑範例</h3>
+        <p>小Q 的 TOEIC 測驗做下一份，換 3 篇新文章，清單已寫好。</p>
+        <div class="go"><button class="cp" onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent).then(()=>this.textContent='已複製 ✓')">一鍵複製整段交辦＋檢查點</button><span hidden>沿用我剛才交辦的那件事：TOEIC 閱讀限時測驗，這次做下一份（換 3 篇新文章）。請照這份檢查點清單工作：①計畫核可——動工前先列出這一份的 3 篇新主題給我看，我核可了再開始；②中途抽查——第一篇做好先停下來讓我測，我說繼續才繼續；③交付驗收——交件時逐條對照標準：計時會動、計分正確。必停紅線：花錢、寄出、刪除、對外發佈，碰到任何一項一律停下來問我。開始前，先複誦一次以上檢查點與紅線。</span></div>
+        <p>貼在 L1 同一個對話裡。</p>
+      </div>
+      <div class="path">
+        <h3><span>B</span>做自己的事</h3>
+        <p>L1 那件事的下一次；那件只做一次，就換同類的下一件。</p>
+        <div class="go"><button class="cp" onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent).then(()=>this.textContent='已複製 ✓')">一鍵複製空白常設清單</button><span hidden>沿用我剛才交辦的那件事，這是它的常設檢查點清單，往後每次都照這份做：
 一、計畫核可：動工前先列出你的計畫給我看，我核可＿＿後再開始。
 二、中途抽查：做完＿＿先停下來給我看，我說繼續才繼續。
 三、交付驗收：交件時逐條對照這個標準：＿＿
 必停紅線：花錢、寄出、刪除、對外發佈——碰到任何一項，一律停下來先問我。
-開始前，先複誦一次以上檢查點與紅線。這次的任務：＿＿（這件事的下一次）</span>　<button onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent).then(()=>this.textContent='已複製 ✓')" style="font:inherit;font-weight:700;color:var(--seal,#B5432E);background:none;border:1.5px solid currentColor;border-radius:6px;padding:1px 8px;cursor:pointer">一鍵複製整段交辦＋檢查點</button><span hidden>沿用我剛才交辦的那件事：TOEIC 閱讀限時測驗，這次做下一份（換 3 篇新文章）。請照這份檢查點清單工作：①計畫核可——動工前先列出這一份的 3 篇新主題給我看，我核可了再開始；②中途抽查——第一篇做好先停下來讓我測，我說繼續才繼續；③交付驗收——交件時逐條對照標準：計時會動、計分正確。必停紅線：花錢、寄出、刪除、對外發佈，碰到任何一項一律停下來問我。開始前，先複誦一次以上檢查點與紅線。</span>　<button onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent).then(()=>this.textContent='已複製 ✓')" style="font:inherit;font-weight:700;color:var(--seal);background:none;border:1.5px solid currentColor;border-radius:6px;padding:1px 8px;cursor:pointer">一鍵複製：居服員版清單</button><span hidden>我家請了居服員，每週固定帶我爸媽回診。請幫我擬一份給居服員的固定交代清單，照三個檢查點寫：①出門前先跟我說行程；②看完診先傳藥單照片給我；③回來我照清單點收。另外加一條：要多花錢，一律先問我。先列出你的計畫給我看，我核可了再寫。</span>　<b>示例續作：</b>TOEIC 下一份測驗——計畫核可＝先列新主題；中途抽查＝第一篇先停；交付驗收＝計時與計分。<b>自己的事參考例：</b>每週小組／家庭通知——計畫核可＝先列要通知的事項；中途抽查＝寫完第一則先看；交付驗收＝時間地點核對無誤。</p>
+開始前，先複誦一次以上檢查點與紅線。這次的任務：＿＿（這件事的下一次）</span></div>
+        <p>填好空格再貼。</p>
+        <p>想不到？家裡的事就像交代居服員：每週帶爸媽回診、確認用藥。<button class="cp" onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent).then(()=>this.textContent='已複製 ✓')">一鍵複製居服員版清單</button><span hidden>同一位居服員，往後每週固定來。請幫我擬一份給居服員的每週檢查清單，照三個檢查點寫：①計畫核可：每週來之前，先跟我說這週要做什麼；②中途抽查：藥盒分好、血壓血糖量完，先傳照片和紀錄給我；③交付驗收：每週對照醫生交代的目標，看藥有沒有按時吃、血壓血糖在不在醫生說的範圍。另外兩條：爸媽不肯吃藥、沒按時吃，或說有吃但數字還是不對，當天就告訴我；要多花錢，一律先問我。先列出你的計畫給我看，我核可了再寫。</span></p>
+      </div>
+    </div>
+    <p class="both">兩條路都不換題：同一件事，做深一層。</p>
+    <p class="printonly">網頁版一鍵複製：掃 handout 上的 QR</p>
+  </section>
 
-  <p style="font-size:.92em;color:var(--muted,#3D4A5C)"><b>用真任務、假資料：姓名、電話、名單、密碼、財務、醫療先去識別。</b></p>
-  <div class="done">
-    <div class="stamp">完成判準</div>
-    <p>實測中清單至少<b>攔下一件你沒料到的事</b>——或完整跑通一輪。</p>
-  </div>
+  <section>
+    <h2><span class="n">3</span>操作三步</h2>
+    <ol class="how">
+      <li><div><b>寫成固定清單</b><small>三型檢查點從 L1 抬過來，加必停紅線，往後每次照這份做。</small></div></li>
+      <li><div><b>檢查點放對位置</b><small>動工前看計畫、第一份做完先停、交件時逐條對標準。三型缺一，就有一段沒人看。</small></div></li>
+      <li><div><b>實測驗收</b><small>用這件事的下一次跑完整一輪，看清單有沒有真的攔到東西。</small></div></li>
+    </ol>
+    <p class="stuck"><b>卡住：</b>AI 跳過檢查點，就叫它停，先複誦清單再做。</p>
+    <p class="line">必停：花錢、寄出、刪除、對外發佈。假資料：姓名、電話、名單、密碼、財務、醫療先去識別。</p>
+  </section>
 
-  <div class="advbox"><b>進階挑戰</b>① 把這份清單併進你 101 的工作模板，變成可重用的「交辦模板」。② 為紅線設計一句 AI 必須複誦的確認句（例：「本任務不涉及花錢、寄出、刪除、對外，若涉及我會先停」）。③ 故意塞一個會踩紅線的變化題，測清單擋不擋得住。④ 從零開新題：換一件全新的事，用這份清單從頭交辦一次。</div>
+  <p class="fine">任何 AI 工具皆可 · 免費版可完成 · 各工具介面可能不同 · AI 會做錯，所以才有檢查點 · 放手交給 AI · 實作工作坊 · 題卡 2／3</p>
 
-    <div class="webnav">⇦ <a href="slides.html#9">三卡頁投影</a> · <a href="tools.html">交辦檢查點工具表</a> · 上一張：<a href="card-level1.html">L1</a> · 下一張：<a href="card-level3.html">L3 團隊授權表</a></div>
-  <footer>
-    <span>放手交給 AI · 實作工作坊 · 題卡 2／3</span>
-    <span>任何 AI 工具皆可 · 免費版可完成</span>
-  </footer>
+  <div class="webnav">⇦ <a href="slides.html#9">三卡頁投影</a> · <a href="tools.html">交辦檢查點工具表</a> · 上一張：<a href="card-level1.html">L1 交辦卡</a> · 下一張：<a href="card-level3.html">L3 團隊授權表</a></div>
 
 </div>
 </body>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+<title>交辦卡 L1 說明</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    color-scheme: light dark;
+    --paper:#F7F6F2;
+    --surface:#FFFFFF;
+    --ink:#17263B;
+    --muted:#3D4A5C;
+    --faint:#677180;
+    --teal:#2E7D6B;
+    --seal:#B5432E;
+    --hair:#D9D6CE;
+    --on-accent:#FDFBF7;
+    --wash:#EDF3F1;
+    --qrpaper:#FFFFFF;--qrink:#000000;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --paper:#14181F;--surface:#1C222B;--ink:#E8E5DE;--muted:#B4BCC7;--faint:#87919D;
+      --teal:#4FA893;--seal:#D4664F;--hair:#2A3038;--on-accent:#16100E;--wash:#1A2420;
+      --qrpaper:#FFFFFF;--qrink:#000000;
+    }
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{background:var(--paper);}
+  body{color:var(--ink);font-family:'Noto Sans TC',sans-serif;font-size:16px;line-height:1.65;padding:28px 20px 36px;}
+  .sheet{max-width:760px;margin:0 auto;}
+  header{display:flex;align-items:center;gap:16px;border-bottom:3px double var(--ink);padding-bottom:12px;}
+  .badge{background:var(--seal);color:var(--on-accent);font-weight:700;font-size:16px;letter-spacing:.08em;text-align:center;
+    padding:10px 14px;border-radius:4px;transform:rotate(-2deg);line-height:1.35;white-space:nowrap;}
+  .badge small{display:block;font-size:13px;letter-spacing:.28em;}
+  .ttl{flex:1;}
+  h1{font-weight:900;font-size:28px;line-height:1.3;}
+  .sub{color:var(--muted);font-size:15px;}
+  .qr{flex:0 0 auto;text-align:center;font-size:13px;color:var(--muted);}
+  .qr svg{display:block;width:28mm;height:28mm;}
+  h2{font-weight:700;font-size:18px;margin:16px 0 4px;color:var(--teal);}
+  p,li{font-size:16px;}
+  .k{font-weight:700;}
+  ol,ul{padding-left:1.4em;}
+  li+li{margin-top:2px;}
+  dl{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;}
+  dt{font-weight:700;color:var(--seal);white-space:nowrap;}
+  .pair{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px;}
+  .pair div{background:var(--wash);border-radius:8px;padding:8px 12px;}
+  .pair b{display:block;}
+  .fine{margin-top:16px;font-size:13px;color:var(--faint);border-top:1px solid var(--hair);padding-top:6px;}
+  @media (max-width:560px){ .pair{grid-template-columns:1fr;} header{flex-wrap:wrap;} }
+  @media print{
+    :root{color-scheme:only light;}
+    html,body{background:var(--surface);}
+    body{padding:0;}
+    .sheet{max-width:none;}
+    @page{size:A4;margin:14mm 16mm;}
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+  <header>
+    <div class="badge"><small>LEVEL 1 · 入門</small>交辦卡</div>
+    <div class="ttl">
+      <h1>把一件事，完整交給 AI</h1>
+      <p class="sub">交辦卡說明 · 放手交給 AI 實作工作坊 · 題卡 1／3</p>
+    </div>
+    <div class="qr"><svg viewBox="0 0 37 37" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges" aria-hidden="true"><rect width="37" height="37" fill="var(--qrpaper)"/><path d="M2 2h7v1h-7zM13 2h5v1h-5zM19 2h3v1h-3zM23 2h3v1h-3zM28 2h7v1h-7zM2 3h1v1h-1zM8 3h1v1h-1zM13 3h1v1h-1zM15 3h3v1h-3zM19 3h1v1h-1zM22 3h2v1h-2zM25 3h1v1h-1zM28 3h1v1h-1zM34 3h1v1h-1zM2 4h1v1h-1zM4 4h3v1h-3zM8 4h1v1h-1zM12 4h4v1h-4zM19 4h2v1h-2zM22 4h1v1h-1zM25 4h1v1h-1zM28 4h1v1h-1zM30 4h3v1h-3zM34 4h1v1h-1zM2 5h1v1h-1zM4 5h3v1h-3zM8 5h1v1h-1zM12 5h1v1h-1zM15 5h2v1h-2zM18 5h1v1h-1zM20 5h2v1h-2zM24 5h1v1h-1zM28 5h1v1h-1zM30 5h3v1h-3zM34 5h1v1h-1zM2 6h1v1h-1zM4 6h3v1h-3zM8 6h1v1h-1zM11 6h2v1h-2zM15 6h2v1h-2zM23 6h1v1h-1zM25 6h2v1h-2zM28 6h1v1h-1zM30 6h3v1h-3zM34 6h1v1h-1zM2 7h1v1h-1zM8 7h1v1h-1zM10 7h2v1h-2zM13 7h1v1h-1zM16 7h4v1h-4zM21 7h3v1h-3zM28 7h1v1h-1zM34 7h1v1h-1zM2 8h7v1h-7zM10 8h1v1h-1zM12 8h1v1h-1zM14 8h1v1h-1zM16 8h1v1h-1zM18 8h1v1h-1zM20 8h1v1h-1zM22 8h1v1h-1zM24 8h1v1h-1zM26 8h1v1h-1zM28 8h7v1h-7zM12 9h1v1h-1zM16 9h4v1h-4zM21 9h3v1h-3zM25 9h2v1h-2zM2 10h1v1h-1zM5 10h1v1h-1zM7 10h2v1h-2zM10 10h2v1h-2zM14 10h3v1h-3zM18 10h1v1h-1zM20 10h4v1h-4zM25 10h3v1h-3zM29 10h1v1h-1zM2 11h1v1h-1zM4 11h2v1h-2zM9 11h2v1h-2zM13 11h1v1h-1zM15 11h1v1h-1zM19 11h1v1h-1zM22 11h1v1h-1zM26 11h4v1h-4zM34 11h1v1h-1zM2 12h1v1h-1zM6 12h1v1h-1zM8 12h3v1h-3zM13 12h1v1h-1zM15 12h2v1h-2zM18 12h1v1h-1zM21 12h2v1h-2zM24 12h1v1h-1zM27 12h4v1h-4zM32 12h1v1h-1zM34 12h1v1h-1zM5 13h1v1h-1zM7 13h1v1h-1zM15 13h1v1h-1zM17 13h1v1h-1zM21 13h3v1h-3zM25 13h1v1h-1zM27 13h1v1h-1zM30 13h2v1h-2zM33 13h1v1h-1zM4 14h1v1h-1zM7 14h3v1h-3zM13 14h1v1h-1zM16 14h4v1h-4zM21 14h3v1h-3zM26 14h1v1h-1zM28 14h2v1h-2zM31 14h1v1h-1zM34 14h1v1h-1zM2 15h1v1h-1zM5 15h2v1h-2zM10 15h3v1h-3zM14 15h4v1h-4zM21 15h1v1h-1zM24 15h1v1h-1zM26 15h1v1h-1zM28 15h4v1h-4zM33 15h2v1h-2zM3 16h4v1h-4zM8 16h3v1h-3zM14 16h5v1h-5zM22 16h2v1h-2zM25 16h4v1h-4zM30 16h1v1h-1zM33 16h1v1h-1zM3 17h1v1h-1zM12 17h1v1h-1zM14 17h2v1h-2zM18 17h2v1h-2zM21 17h1v1h-1zM23 17h1v1h-1zM28 17h2v1h-2zM33 17h1v1h-1zM2 18h3v1h-3zM6 18h3v1h-3zM10 18h8v1h-8zM19 18h1v1h-1zM21 18h3v1h-3zM26 18h1v1h-1zM28 18h1v1h-1zM30 18h1v1h-1zM33 18h1v1h-1zM3 19h1v1h-1zM5 19h2v1h-2zM9 19h1v1h-1zM13 19h3v1h-3zM18 19h2v1h-2zM23 19h1v1h-1zM25 19h2v1h-2zM29 19h1v1h-1zM31 19h1v1h-1zM2 20h2v1h-2zM7 20h3v1h-3zM12 20h1v1h-1zM16 20h1v1h-1zM22 20h1v1h-1zM27 20h1v1h-1zM32 20h3v1h-3zM2 21h5v1h-5zM13 21h1v1h-1zM16 21h5v1h-5zM22 21h2v1h-2zM25 21h5v1h-5zM33 21h1v1h-1zM3 22h1v1h-1zM5 22h4v1h-4zM13 22h1v1h-1zM15 22h2v1h-2zM22 22h2v1h-2zM27 22h1v1h-1zM29 22h1v1h-1zM33 22h1v1h-1zM3 23h4v1h-4zM9 23h1v1h-1zM11 23h4v1h-4zM16 23h2v1h-2zM24 23h1v1h-1zM26 23h4v1h-4zM33 23h2v1h-2zM2 24h2v1h-2zM6 24h1v1h-1zM8 24h1v1h-1zM10 24h1v1h-1zM12 24h2v1h-2zM15 24h1v1h-1zM18 24h1v1h-1zM20 24h5v1h-5zM28 24h2v1h-2zM31 24h2v1h-2zM34 24h1v1h-1zM3 25h5v1h-5zM9 25h1v1h-1zM14 25h4v1h-4zM20 25h2v1h-2zM23 25h1v1h-1zM27 25h3v1h-3zM33 25h2v1h-2zM2 26h1v1h-1zM4 26h1v1h-1zM6 26h3v1h-3zM18 26h2v1h-2zM21 26h1v1h-1zM23 26h1v1h-1zM26 26h5v1h-5zM10 27h3v1h-3zM14 27h1v1h-1zM16 27h1v1h-1zM21 27h6v1h-6zM30 27h2v1h-2zM33 27h2v1h-2zM2 28h7v1h-7zM11 28h3v1h-3zM16 28h1v1h-1zM19 28h1v1h-1zM22 28h2v1h-2zM26 28h1v1h-1zM28 28h1v1h-1zM30 28h4v1h-4zM2 29h1v1h-1zM8 29h1v1h-1zM10 29h1v1h-1zM13 29h3v1h-3zM18 29h2v1h-2zM21 29h1v1h-1zM23 29h1v1h-1zM26 29h1v1h-1zM30 29h1v1h-1zM34 29h1v1h-1zM2 30h1v1h-1zM4 30h3v1h-3zM8 30h1v1h-1zM12 30h1v1h-1zM14 30h2v1h-2zM17 30h1v1h-1zM20 30h1v1h-1zM22 30h3v1h-3zM26 30h6v1h-6zM2 31h1v1h-1zM4 31h3v1h-3zM8 31h1v1h-1zM10 31h3v1h-3zM17 31h3v1h-3zM23 31h1v1h-1zM25 31h2v1h-2zM28 31h1v1h-1zM30 31h3v1h-3zM2 32h1v1h-1zM4 32h3v1h-3zM8 32h1v1h-1zM11 32h2v1h-2zM14 32h6v1h-6zM23 32h1v1h-1zM25 32h1v1h-1zM30 32h3v1h-3zM34 32h1v1h-1zM2 33h1v1h-1zM8 33h1v1h-1zM11 33h1v1h-1zM16 33h1v1h-1zM19 33h2v1h-2zM22 33h2v1h-2zM25 33h2v1h-2zM31 33h1v1h-1zM2 34h7v1h-7zM10 34h1v1h-1zM12 34h3v1h-3zM17 34h2v1h-2zM20 34h1v1h-1zM23 34h1v1h-1zM26 34h3v1h-3zM30 34h1v1h-1zM33 34h1v1h-1z" fill="var(--qrink)"/></svg>掃碼開卡</div>
+  </header>
+
+  <h2>1　這張卡教什麼</h2>
+  <p>交辦 AI 的完整一輪：<span class="k">說清楚要什麼 → 先看計畫 → 中途抽查 → 回來驗收</span>。每一關都由你把關。完成＝成品真的能用，且說得出檢查點攔下了什麼。</p>
+
+  <h2>2　兩條路怎麼選</h2>
+  <div class="pair">
+    <div><b>A　跑範例</b>第一次就走 A：小Q 的 TOEIC 限時測驗小工具，整段貼上，先跑完一輪。零材料，文章 AI 生成。</div>
+    <div><b>B　做自己的事</b>手上有事要做就走 B：空白五欄自己填。想不到？家裡的事就像交代居服員：帶看病、打掃、買菜料理。</div>
+  </div>
+  <p style="margin-top:6px">兩條路終點相同：走到驗收。</p>
+
+  <h2>3　操作三步</h2>
+  <ol>
+    <li><span class="k">核可計畫</span>：AI 先列計畫，你說可以才動工。</li>
+    <li><span class="k">中途停</span>：做到檢查點就停下來給你看。</li>
+    <li><span class="k">對標準驗收</span>：說得出哪裡過、哪裡不過。</li>
+  </ol>
+  <p>開頭先貼 101 脈絡卡。必停：花錢、寄出、刪除、對外發佈。個資先去識別。</p>
+
+  <h2>4　按鈕裡裝什麼（網頁版一鍵複製）</h2>
+  <dl>
+    <dt>整段交辦</dt><dd>小Q 示例全文：TOEIC 限時測驗網頁，含計畫、檢查點、驗收標準。</dd>
+    <dt>文字版</dt><dd>同一示例的純文字版：AI 出文章與題目，手機碼錶自己計時。小工具跑不動時用。</dd>
+    <dt>空白五欄</dt><dd>五欄範本，填空即可交辦自己的事。</dd>
+    <dt>居服員版交辦</dt><dd>請 AI 擬第一次給居服員的交代單：帶爸媽回診、回診之間探訪、確認用藥分進藥盒。同樣先看計畫、中途看一版、照五欄驗收。</dd>
+    <dt>救命句</dt><dd>「做完哪一步就停下來給我看」的填空句。AI 一口氣做完時用。</dd>
+    <dt>四句首</dt><dd>「我是／我現在／我想要／請你」。沒有 101 脈絡卡時，寫兩三行貼在開頭。</dd>
+  </dl>
+
+  <p class="fine">任何 AI 工具皆可 · 免費版可完成 · 各工具介面可能不同 · tomclin.github.io/ai-course-102/card-level1.html</p>
+</div>
+</body>
+</html>
