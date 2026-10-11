@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+<title>行事曆小幫手 · 截圖一丟，AI 幫你排進日曆</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    color-scheme: light dark;
+    --paper:#F7F6F2;
+    --surface:#FFFFFF;
+    --ink:#17263B;
+    --muted:#3D4A5C;
+    --faint:#677180;
+    --teal:#2E7D6B;
+    --seal:#B5432E;
+    --hair:#D9D6CE;
+    --on-accent:#FDFBF7;
+    --wash:#EDF3F1;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --paper:#14181F;
+      --surface:#1C222B;
+      --ink:#E8E5DE;
+      --muted:#B4BCC7;
+      --faint:#87919D;
+      --teal:#4FA893;
+      --seal:#D4664F;
+      --hair:#2A3038;
+      --on-accent:#16100E;
+      --wash:#1A2420;
+    }
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{background:var(--paper);}
+  body{color:var(--ink);font-family:'Noto Sans TC',sans-serif;font-size:17px;line-height:1.65;padding:28px 18px 40px;}
+  .sheet{max-width:760px;margin:0 auto;}
+
+  header{border-bottom:3px double var(--ink);padding-bottom:14px;}
+  .badge{display:inline-block;background:var(--teal);color:var(--on-accent);font-weight:700;font-size:14px;letter-spacing:.12em;padding:4px 10px;border-radius:4px;}
+  h1{font-weight:900;font-size:28px;line-height:1.3;margin-top:10px;}
+  .lead{color:var(--muted);font-size:16px;margin-top:6px;}
+
+  section{margin-top:22px;}
+  h2{font-weight:700;font-size:20px;margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+  h2 .n{color:var(--on-accent);background:var(--teal);font-size:15px;font-weight:700;border-radius:50%;width:28px;height:28px;display:inline-flex;align-items:center;justify-content:center;flex:none;}
+  p{margin-top:6px;}
+  .muted{color:var(--muted);font-size:15px;}
+
+  ol.steps{list-style:none;display:grid;gap:8px;counter-reset:s;}
+  ol.steps li{counter-increment:s;display:grid;grid-template-columns:32px 1fr;gap:8px;background:var(--surface);border:1px solid var(--hair);border-radius:10px;padding:10px 14px;}
+  ol.steps li::before{content:counter(s);font-weight:900;font-size:22px;color:var(--teal);line-height:1.3;}
+  ol.steps small{display:block;font-size:15px;color:var(--muted);}
+  .ui{font-weight:700;color:var(--teal);}
+
+  .box{background:var(--surface);border:2px solid var(--teal);border-radius:12px;padding:14px 16px;}
+  label{display:block;font-weight:700;font-size:16px;}
+  input[type=email]{width:100%;font:inherit;font-size:18px;color:var(--ink);background:var(--paper);border:1.5px solid var(--hair);border-radius:8px;padding:10px 12px;margin-top:6px;min-height:48px;}
+  input[type=email]:focus{outline:2px solid var(--teal);outline-offset:1px;}
+  .cp{font:inherit;font-weight:700;font-size:17px;color:var(--on-accent);background:var(--seal);border:none;border-radius:8px;padding:10px 18px;cursor:pointer;min-height:48px;margin-top:12px;width:100%;}
+  .hint{font-size:14px;color:var(--faint);margin-top:6px;}
+  pre{white-space:pre-wrap;word-break:break-word;font:inherit;font-size:15px;line-height:1.6;background:var(--wash);border-radius:8px;padding:12px 14px;margin-top:12px;color:var(--ink);}
+
+  .say{background:var(--wash);border-radius:8px;padding:8px 12px;margin-top:6px;font-weight:500;}
+  .rules{border-left:5px solid var(--seal);background:var(--surface);border-radius:8px;padding:10px 14px;}
+  .rules b{color:var(--seal);}
+  dl.qa{display:grid;gap:10px;}
+  dl.qa dt{font-weight:700;}
+  dl.qa dd{color:var(--muted);font-size:16px;}
+
+  .fine{margin-top:22px;font-size:13px;color:var(--faint);border-top:1px solid var(--hair);padding-top:8px;}
+  .webnav{margin-top:10px;font-size:15px;color:var(--faint);}
+  .webnav a{color:var(--teal);font-weight:700;text-decoration:none;}
+  @media print{ .cp,.webnav,input{display:none;} :root{color-scheme:only light;} html,body{background:var(--surface);} }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+<header>
+  <span class="badge">課後小禮物 · 放手交給 AI</span>
+  <h1>行事曆小幫手：<br>截圖一丟，<span style="white-space:nowrap">AI 幫你排進日曆</span></h1>
+  <p class="lead">活動海報、LINE 通知、Email 邀請——拍照或截圖交給 Gemini，它先把活動列給你看，你說「好」，它就放進你的 Google 日曆。用免費帳號就可以。</p>
+</header>
+
+<section>
+  <h2><span class="n">1</span>一次性設定（約 5 分鐘）</h2>
+  <ol class="steps">
+    <li><div>手機下載 <b>Gemini</b> App，用你的 Google 帳號（Gmail）登入。<small>已經在用的，確認登入的是你平常用日曆的那個帳號。</small></div></li>
+    <li><div>打開連結：點左上角選單 → 你的頭像 → <span class="ui">連結的應用程式</span>（英文介面叫 Connected Apps），把 <span class="ui">Google Workspace</span> 打開（裡面包含 Gmail 和日曆）。<small>找不到這一項：先點「個人智慧」（Personal Intelligence）再找。各手機的選單位置可能略有不同。</small></div></li>
+    <li><div>確認 Gemini 的<span class="ui">活動記錄</span>是開著的。<small>這個關掉的話，iPhone 和網頁版會連不上日曆和 Gmail。</small></div></li>
+  </ol>
+</section>
+
+<section>
+  <h2><span class="n">2</span>你的小幫手指令（填好就能複製）</h2>
+  <div class="box">
+    <label for="mail">你的 Gmail 帳號</label>
+    <input type="email" id="mail" placeholder="例如 yourname@gmail.com" autocomplete="email" inputmode="email">
+    <div class="hint">只會填進下面的指令裡，不會傳到任何地方。</div>
+    <button class="cp" id="copy" type="button">一鍵複製小幫手指令</button>
+    <pre id="prompt"></pre>
+  </div>
+  <p class="muted">複製後先存進手機的「記事本」（iPhone 叫「備忘錄」）。以後每次開新對話，先貼這段，再傳活動給它。</p>
+</section>
+
+<section>
+  <h2><span class="n">3</span>怎麼用：跟上課一樣，先看計畫再放行</h2>
+  <ol class="steps">
+    <li><div>在 Gemini 開一個新對話，貼上小幫手指令。<small>它會回「好，請傳活動給我」。</small></div></li>
+    <li><div>傳活動給它，說一句話就好：<div class="say">「加到行事曆」</div><small>可以傳：海報照片、LINE 或網頁截圖、一段文字。也可以請它找信：</small><div class="say">「幫我找 ○○ 寄來的信，把裡面的活動加到行事曆」</div></div></li>
+    <li><div>看它列出來的清單——名稱、日期時間、地點都對，就回「好」；不對就直接說哪裡要改。<small>這一步就是上課練的「計畫核可」：你點頭，它才動手。</small></div></li>
+    <li><div>到 Google 日曆看一眼，確認活動真的進去了。<small>這一步就是「驗收」。</small></div></li>
+  </ol>
+</section>
+
+<section>
+  <h2><span class="n">4</span>它不會做的事</h2>
+  <div class="rules">
+    指令裡已經寫好規矩：<b>不寄信、不回信、不刪除、不修改你原本的活動、不邀請別人</b>。要做這些事，它會先問你。<br>
+    <span class="muted">跟上課講的必停紅線一樣：花錢、寄出、刪除、對外發佈——碰到一律停下來問你。</span>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">5</span>卡住怎麼辦</h2>
+  <dl class="qa">
+    <dt>找不到「連結的應用程式」</dt>
+    <dd>確認已經登入 Google 帳號，並且「活動記錄」是開的；再找找「個人智慧」底下。</dd>
+    <dt>它說沒辦法存取我的日曆</dt>
+    <dd>在你的話前面加上「@Google 日曆」（輸入 @ 會跳出選單，點日曆），再說一次。</dd>
+    <dt>它直接建了，沒先給我看</dt>
+    <dd>回它一句「下次先列給我看，我說好再建」。建錯的活動，到日曆 App 裡自己刪掉最安全。</dd>
+    <dt>時間或年份不對</dt>
+    <dd>告訴它哪裡錯，例如「是下午 2 點，不是早上」或「這是民國 115 年」。</dd>
+    <dt>它說做不到某件事</dt>
+    <dd>Gemini 目前不能幫你邀請別人參加活動，也不能修改已建好活動的地點和說明——這些到日曆 App 裡自己改。</dd>
+  </dl>
+</section>
+
+<p class="fine">用免費版即可 · 各工具介面與功能可能隨時更新，依你手機上看到的為準 · 功能是否開放依地區、語言、裝置而異</p>
+<p class="webnav"><a href="index.html">← 回課程首頁</a></p>
+
+</div>
+<script>
+(function(){
+  var T = "你是我的行事曆小幫手。我會傳給你活動的截圖、照片、文字，或請你到我的 Gmail 找信，請你幫我把活動放進 Google 日曆。\n\n" +
+  "我的 Google 帳號：{MAIL}（日曆一律建在這個帳號的預設日曆）\n" +
+  "時區：台北時間（UTC+8）\n\n" +
+  "做法：\n" +
+  "1. 從圖片、文字或信件裡找出：活動名稱、日期、開始與結束時間、地點（場地名稱＋完整地址）、主辦人或講者、其他說明（報名編號、聯絡方式、議程）。\n" +
+  "2. 民國年請換成西元年（民國年＋1911，例如 115 年＝2026 年）。\n" +
+  "3. 沒寫結束時間的，照活動性質估：聚會、禮拜約 1.5 小時，講座、研討會約 2 小時，並標明是估計的。\n" +
+  "4. 活動名稱要一看就懂；有講者時，把講者名字放在括號裡，例如「親子理財講座（王大明老師）」。\n" +
+  "5. 跨好幾天的活動，每天各建一筆，不要建成一筆橫跨多天。\n" +
+  "6. 一份資料上有很多日期時，先問我哪些要加，不要全部都加。\n\n" +
+  "規矩（一定要遵守）：\n" +
+  "・建立之前，先把要建的活動逐筆列給我看（名稱、日期時間、地點），等我說「好」才建立。\n" +
+  "・建好後，簡短告訴我建在哪個日曆、建了哪幾筆。\n" +
+  "・Gmail 只用來讀信找活動：不要寄信、不要回信、不要轉寄。\n" +
+  "・不要刪除或修改任何原本的活動；需要的話，先問我。\n" +
+  "・不要幫我邀請任何人。\n\n" +
+  "準備好了就回答「好，請傳活動給我」。";
+  var mail = document.getElementById('mail'), pre = document.getElementById('prompt'), btn = document.getElementById('copy');
+  function text(){ var m = (mail.value||'').trim(); return T.replace('{MAIL}', m ? m : '＿＿＿＿（請填你的 Gmail）'); }
+  function render(){ pre.textContent = text(); }
+  mail.addEventListener('input', render); render();
+  btn.addEventListener('click', function(){
+    var t = text();
+    function ok(){ btn.textContent = '已複製 ✓ 去 Gemini 貼上'; }
+    function fallback(){
+      var r = document.createRange(); r.selectNodeContents(pre);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      try{ if(document.execCommand('copy')){ ok(); return; } }catch(e){}
+      btn.textContent = '已幫你選好全文，請長按「拷貝」';
+    }
+    if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(t).then(ok, fallback); } else { fallback(); }
+  });
+})();
+</script>
+</body>
+</html>
