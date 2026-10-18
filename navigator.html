@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>工作任務導航室｜Work Order Navigator</title>
+<!-- v1.2 · 2026-10-18 校準：步驟列改交辦進度追蹤；複製任務單為主按鈕、ChatGPT 深連結降次要；補假資料紅線；發佈用字；色碼收進 :root（原版 v1.0＝Tom 10/18） -->
+<style>
+:root{color-scheme:dark;
+--bg:#0b1020;--bg2:#172744;--panel:#151f34;--panel2:#111a2b;--panel3:#0d1728;--well:#0a1221;--field:#0c1425;
+--line:#2a3854;--line2:#354663;--line3:#405475;--btn:#1a2942;--stepon:#192b49;
+--text:#eef3ff;--muted:#a8b5cf;--faint:#72819e;--accent:#8db7ff;--accent2:#c4dcff;--accent-ink:#0b1425;
+--accent-soft:#8db7ff22;--accent-ring:#8db7ff33;--shadow:#00000022;
+--good:#a5e3c1;--good-bg:#10291f;--good-line:#3e8067;
+--warn:#ffd28b;--warn-bg:#2a2112;--warn-line:#8a6a3c;
+--info-bg:#14233a;--info-line:#3b587a;
+--danger:#ffd2c7;--danger-line:#8e5b50;
+--p-paper:#ffffff;--p-ink:#111111;--p-muted:#444444;--p-line:#bbbbbb;--p-field:#aaaaaa}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,var(--bg2) 0,var(--bg) 55%);color:var(--text);font:16px/1.55 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.wrap{max-width:940px;margin:0 auto;padding:24px 16px 56px}.hero{padding:12px 0 18px}.eyebrow{color:var(--accent);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700}.hero h1{font-size:clamp(1.8rem,5vw,2.7rem);line-height:1.15;margin:.5rem 0}.hero p{color:var(--muted);max-width:700px;margin:0}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:18px 0 8px}
+.step{font:inherit;text-align:left;border:1px solid var(--line);background:var(--panel2);border-radius:12px;padding:10px 12px;color:var(--muted);font-size:.85rem;cursor:pointer;min-height:64px}
+.step b{display:block;color:var(--text);font-size:.92rem}
+.step.current{border-color:var(--accent);background:var(--stepon);box-shadow:inset 0 0 0 1px var(--accent-ring)}
+.step.done{border-color:var(--good-line);background:var(--good-bg)}.step.done .st{color:var(--good)}
+.guide{margin:0 0 14px;padding:10px 14px;border-left:3px solid var(--accent);background:var(--info-bg);border-radius:8px;color:var(--accent2);font-size:.92rem}
+.card{background:linear-gradient(180deg,var(--panel),var(--panel2));border:1px solid var(--line);border-radius:18px;padding:clamp(16px,3vw,26px);margin:14px 0;box-shadow:0 12px 30px var(--shadow);scroll-margin-top:12px}.card h2{font-size:1.22rem;margin:0 0 6px}.hint{color:var(--muted);font-size:.9rem;margin:0 0 18px}.field{margin:16px 0}.field label{display:block;font-weight:650;margin-bottom:7px}.field small{display:block;color:var(--muted);font-size:.84rem;margin-top:6px}
+input,textarea{width:100%;border:1px solid var(--line2);background:var(--field);color:var(--text);border-radius:10px;padding:12px 13px;font:inherit;outline:none}input:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}textarea{min-height:86px;resize:vertical}::placeholder{color:var(--faint)}
+.req{color:var(--accent);font-size:.8rem;font-weight:700;margin-left:6px}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}.btn{border:1px solid var(--line3);border-radius:10px;background:var(--btn);color:var(--text);font:inherit;font-weight:650;padding:11px 15px;cursor:pointer;min-height:44px}.btn:hover{filter:brightness(1.15)}.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}.btn.ghost{background:transparent}.btn.danger{border-color:var(--danger-line);color:var(--danger)}.btn small{font-weight:400;opacity:.85}
+.btn.pulse{box-shadow:0 0 0 4px var(--accent-ring)}
+.status{padding:13px 15px;border:1px solid var(--info-line);background:var(--info-bg);border-radius:12px;margin:12px 0;color:var(--accent2);white-space:pre-wrap}.status.good{border-color:var(--good-line);color:var(--good);background:var(--good-bg)}.status.warn{border-color:var(--warn-line);color:var(--warn);background:var(--warn-bg)}
+.preview{white-space:pre-wrap;background:var(--well);border:1px solid var(--line);border-radius:12px;padding:16px;overflow-wrap:anywhere;min-height:80px}.hidden{display:none!important}.foot{color:var(--muted);font-size:.83rem;text-align:center;margin-top:24px}
+.cmds{display:grid;gap:9px;margin:12px 0}.cmd{display:flex;gap:10px;align-items:center;border:1px solid var(--line);padding:11px;border-radius:10px;background:var(--panel3)}.cmd span{flex:1}.cmd .tag{display:inline-block;margin-left:6px;font-size:.78rem;color:var(--accent);font-weight:700;white-space:nowrap}.cmd.used{border-color:var(--good-line)}.cmd.used .tag{color:var(--good)}
+@media(max-width:620px){.steps{grid-template-columns:repeat(2,1fr)}.wrap{padding:16px 12px 36px}.actions .btn{flex:1 1 100%}.cmd{flex-wrap:wrap}.cmd .btn{flex:1 1 100%}}
+@media print{body{background:var(--p-paper);color:var(--p-ink)}.card,.step,.preview,.cmd{background:var(--p-paper);color:var(--p-ink);border-color:var(--p-line);box-shadow:none}.hint,.field small,.foot,.eyebrow,.hero p{color:var(--p-muted)}.btn,.steps,.guide{display:none}.wrap{max-width:none;padding:0}input,textarea{color:var(--p-ink);background:var(--p-paper);border-color:var(--p-field)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="hero">
+<div class="eyebrow">Work Order Navigator</div>
+<h1>工作任務導航室</h1>
+<p>把工作說清楚、先核可計畫、分段檢查，再依標準驗收。這個工具可離線使用；資料只保存在目前瀏覽器，不會自動傳送出去。</p>
+</header>
+
+<nav class="steps" aria-label="交辦進度（點一下跳到該步）">
+<button class="step" type="button" data-step="1"><b>01｜釐清需求</b><span class="st"></span></button>
+<button class="step" type="button" data-step="2"><b>02｜計畫核可</b><span class="st"></span></button>
+<button class="step" type="button" data-step="3"><b>03｜中途抽查</b><span class="st"></span></button>
+<button class="step" type="button" data-step="4"><b>04｜交付驗收</b><span class="st"></span></button>
+</nav>
+<p class="guide" id="guide" role="status"></p>
+
+<section class="card" id="card-bg">
+<h2>第一步｜工作背景</h2>
+<p class="hint">先回答你知道的部分即可。這些問題幫助你明確說出自己、現況、目標和希望得到的協助。</p>
+<div class="field"><label for="who">我是……</label><input id="who" placeholder="例如：正在準備 TOEIC 的學習者"></div>
+<div class="field"><label for="situation">我現在……</label><textarea id="situation" placeholder="目前的狀況、已完成的工作、遇到的問題"></textarea></div>
+<div class="field"><label for="want">我想要……</label><textarea id="want" placeholder="描述你希望最後得到的結果"></textarea></div>
+<div class="field"><label for="request">請你……</label><textarea id="request" placeholder="例如：先規劃、製作網頁、整理資料或檢查成果"></textarea></div>
+</section>
+
+<section class="card" id="card-spec">
+<h2>第二步｜任務規格</h2>
+<p class="hint">將「做完」轉成可以看得見、測得出來的成果。下面四欄填好，進度第 01 步就完成。</p>
+<div class="field"><label for="goal">這件事的目標<span class="req">必填</span></label><textarea id="goal" placeholder="最後要達成的具體結果是什麼？要解決什麼問題？"></textarea><small>引導問題：誰會使用成果？完成後會有什麼不同？</small></div>
+<div class="field"><label for="checkpoint">檢查點（中途抽查）<span class="req">必填</span></label><textarea id="checkpoint" placeholder="例如：完成第一個頁面、能讓我實際測一次的時候"></textarea><small>只寫「停在哪一步」就好；「停下來給我看、等我說繼續」任務單會自動補上。</small></div>
+<div class="field"><label for="deliverable">成品長什麼樣<span class="req">必填</span></label><textarea id="deliverable" placeholder="例如：可下載的 HTML、報告、試算表、簡報或可直接使用的網頁"></textarea><small>引導問題：檔案格式、內容、功能、風格和使用方式是什麼？</small></div>
+<div class="field"><label for="criteria">怎樣算合格（交付驗收）<span class="req">必填</span></label><textarea id="criteria" placeholder="例如：計時正常、計分正確、手機版可操作、重新測驗正常。"></textarea><small>引導問題：哪些條件一定要通過？如何逐項驗證？哪些項目需要你親自測試？</small></div>
+</section>
+
+<section class="card" id="card-rules">
+<h2>第三步｜必停紅線與假資料</h2>
+<p class="hint">對於高影響或不可逆動作，事先寫清楚哪些情況必須停止並詢問你；交辦時用真任務、假資料。</p>
+<div class="field"><label for="redlines">未經明確同意，不可執行的動作</label><textarea id="redlines">花錢、寄出、刪除、對外發佈前，必須停下來詢問我。
+真任務、假資料：姓名、電話、名單、密碼、財務、醫療先去識別。</textarea></div>
+<div class="field"><label for="extra">其他限制或偏好（選填）</label><textarea id="extra" placeholder="例如：使用繁體中文、深色風格、先做一小部分、不要安裝額外軟體"></textarea></div>
+<div class="actions"><button class="btn primary" id="make">產生我的工作任務單</button><button class="btn" id="save">儲存到此瀏覽器</button><button class="btn ghost" id="load">載入已儲存內容</button><button class="btn ghost" id="export">下載文字檔</button><button class="btn ghost" id="print">列印／另存 PDF</button></div>
+<div id="notice" class="status hidden" role="status"></div>
+</section>
+
+<section class="card" id="card-out">
+<h2>第四步｜可複製的任務單</h2>
+<p class="hint">先檢查內容，再複製到你的 AI 對話（Gemini、ChatGPT、Claude、Copilot 都可以）。提交任務單不等於核可計畫。</p>
+<div id="preview" class="preview">填寫上方欄位後，按「產生我的工作任務單」。</div>
+<div class="actions"><button class="btn primary" id="copy">複製任務單</button><button class="btn" id="send">在 ChatGPT 開新對話 <small>（ChatGPT 限定）</small></button><button class="btn danger" id="clear">清空表單</button></div>
+</section>
+
+<section class="card" id="card-cmd">
+<h2>交辦時用的控制指令</h2>
+<p class="hint">AI 回應後，照情況複製一句貼回對話。按「核可這份計畫」「停下來讓我檢查」「繼續」「進行交付驗收」時，上方進度會跟著前進。</p>
+<div class="cmds" id="cmds"></div>
+<div class="actions"><button class="btn ghost" id="restart">開始新的一輪（只重設進度）</button></div>
+</section>
+<p class="foot">離線可用 · 不需要帳號 · 不會自動上傳資料。請注意：清除瀏覽器資料可能會移除本機儲存內容。</p>
+</div>
+<script>
+const ids=['who','situation','want','request','goal','checkpoint','deliverable','criteria','redlines','extra'];
+const req=['goal','checkpoint','deliverable','criteria'];
+const $=id=>document.getElementById(id);
+const PLACE='填寫上方欄位後，按「產生我的工作任務單」。';
+const CMDS=[
+ {k:'plan',t:'先給我計畫',d:'只規劃，不執行。'},
+ {k:'approve',t:'核可這份計畫',d:'只允許依照指定計畫開始，不代表同意未列出的額外動作。',adv:'approved'},
+ {k:'stop',t:'停下來讓我檢查',d:'暫停工作並交付目前成果。',adv:'checked'},
+ {k:'cont',t:'繼續',d:'通過當前檢查點，允許進入下一階段。',adv:'checked'},
+ {k:'fix',t:'不通過，先修正',d:'不進入下一階段，先處理問題。'},
+ {k:'accept',t:'進行交付驗收',d:'按照事先訂好的標準逐項驗證。',adv:'accepted'},
+ {k:'pause',t:'暫停，不要再做',d:'停止後續工作，等待新的指示。'}
+];
+const PKEY='workOrderNavigatorProgressV1';
+let P={copied:false,approved:false,checked:false,accepted:false,used:{}};
+try{const d=JSON.parse(localStorage.getItem(PKEY)||'null');if(d)P=Object.assign(P,d)}catch(e){}
+function saveP(){try{localStorage.setItem(PKEY,JSON.stringify(P))}catch(e){}}
+function val(id){return $(id).value.trim()||'（尚未填寫）'}
+function makeText(){return [
+'我是……',val('who'),'',
+'我現在……',val('situation'),'',
+'我想要……',val('want'),'',
+'請你……',val('request'),'',
+'這件事的目標：'+val('goal'),
+'先給我看計畫（＝計畫核可）再動工：請先列出你的計畫，我核可後再開始。',
+'檢查點（＝中途抽查）：'+val('checkpoint')+'——到了這一步就停下來給我看，等我說「繼續」才往下做。',
+'成品長什麼樣：'+val('deliverable'),
+'怎樣算合格（＝交付驗收）：驗收標準'+val('criteria'),
+'必停紅線與假資料：'+val('redlines'),
+'其他限制或偏好：'+val('extra'),
+'',
+'執行規則：先提出計畫並等待明確核可；到達檢查點必須停止，等待我說「繼續」；未經我明確同意，不得執行必停紅線中的動作。'
+].join('\n')}
+function notice(msg,kind=''){const n=$('notice');n.textContent=msg;n.className='status'+(kind?' '+kind:'');}
+function filled(){return req.filter(id=>$(id).value.trim()).length}
+let wasS1=filled()===4;
+function render(){
+ const n=filled(),s=[n===4,P.approved,P.checked,P.accepted];
+ const cur=s.indexOf(false);
+ const sub=[
+  s[0]?'✓ 四欄填好':n+'／4 欄',
+  s[1]?'✓ 已核可':(P.copied?'等 AI 交計畫，看過再核可':'先產生並複製任務單'),
+  s[2]?'✓ 已抽查':'到檢查點就喊停',
+  s[3]?'✓ 這一輪走完了':'對照標準逐項驗'];
+ document.querySelectorAll('.step').forEach((el,i)=>{el.classList.toggle('done',s[i]);el.classList.toggle('current',i===cur);el.querySelector('.st').textContent=sub[i];});
+ const G=[
+  '先把第二步的四個必填欄位寫清楚：目標、檢查點、成品、合格標準。',
+  P.copied?'把任務單貼給 AI，請它先交計畫。看過、沒問題，再複製「核可這份計畫」貼回去。':'四欄都填好了。按「產生我的工作任務單」，再按「複製任務單」貼到你的 AI 對話。',
+  'AI 做到你寫的檢查點就該停下來。看一下成果，沒問題就複製「繼續」，有問題就複製「不通過，先修正」。',
+  '成品交出來了嗎？複製「進行交付驗收」，照你寫的合格標準一項一項驗。',
+  '這一輪交辦走完了：核可、抽查、驗收都做到了。下一件事，按「開始新的一輪」。'];
+ $('guide').textContent=G[cur===-1?4:cur];
+ $('make').classList.toggle('pulse',n===4&&!P.copied);
+ document.querySelectorAll('.cmd').forEach(r=>r.classList.toggle('used',!!P.used[r.dataset.k]));
+}
+async function copyText(t,okMsg){try{await navigator.clipboard.writeText(t);notice(okMsg,'good');return true}catch(e){notice('瀏覽器未允許自動複製。請選取下面文字後手動複製：\n\n'+t,'warn');return false}}
+$('cmds').innerHTML=CMDS.map(c=>'<div class="cmd" data-k="'+c.k+'"><span><b>'+c.t+'</b>'+(c.adv?' <span class="tag">推進進度</span>':'')+'<br>'+c.d+'</span><button class="btn" type="button">複製這句</button></div>').join('');
+document.querySelectorAll('.cmd').forEach(r=>r.querySelector('button').onclick=async()=>{const c=CMDS.find(x=>x.k===r.dataset.k);await copyText(c.t,'已複製「'+c.t+'」，貼回你的 AI 對話。');P.used[c.k]=true;if(c.adv)P[c.adv]=true;saveP();render();});
+ids.forEach(id=>$(id).addEventListener('input',()=>{const now=filled()===4;if(now&&!wasS1)notice('四欄都填好了，按「產生我的工作任務單」。','good');wasS1=now;render();}));
+document.querySelectorAll('.step').forEach(el=>el.onclick=()=>{const t={1:'card-spec',2:P.copied?'card-cmd':'card-out',3:'card-cmd',4:'card-cmd'}[el.dataset.step];$(t).scrollIntoView({behavior:'smooth',block:'start'});});
+$('make').onclick=()=>{$('preview').textContent=makeText();notice('任務單已產生。請檢查內容，確認檢查點與驗收標準是否具體，再按「複製任務單」。','good');$('card-out').scrollIntoView({behavior:'smooth',block:'start'});};
+$('save').onclick=()=>{try{localStorage.setItem('workOrderNavigatorV1',JSON.stringify(Object.fromEntries(ids.map(id=>[id,$(id).value]))));notice('已儲存到這個瀏覽器。','good')}catch(e){notice('無法儲存；可能是瀏覽器限制了本機儲存。請使用「下載文字檔」備份。','warn')}};
+$('load').onclick=()=>{try{const d=JSON.parse(localStorage.getItem('workOrderNavigatorV1')||'null');if(!d){notice('找不到已儲存的任務單。','warn');return}ids.forEach(id=>$(id).value=d[id]||'');$('preview').textContent=makeText();wasS1=filled()===4;render();notice('已載入已儲存內容。','good')}catch(e){notice('載入失敗。','warn')}};
+$('export').onclick=()=>{const blob=new Blob([makeText()],{type:'text/plain;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='工作任務導航室-任務單.txt';a.click();URL.revokeObjectURL(a.href);notice('已建立文字檔下載。','good')};
+$('print').onclick=()=>window.print();
+$('copy').onclick=async()=>{const t=$('preview').textContent===PLACE?makeText():$('preview').textContent;if($('preview').textContent===PLACE)$('preview').textContent=t;await copyText(t,'已複製任務單。貼到你的 AI 對話，請它先交計畫。');P.copied=true;saveP();render();};
+$('send').onclick=()=>{const t=makeText();const prompt='請依照以下工作任務單協助我。第一階段只分析需求並提出計畫，不要開始製作；等我明確核可後才動工。每到中途檢查點必須停止，等我說「繼續」才進行。必停紅線未經我明確同意不得執行。\n\n'+t;window.open('https://chatgpt.com/?q='+encodeURIComponent(prompt),'_blank','noopener');P.copied=true;saveP();render();notice('已嘗試在新分頁開啟 ChatGPT。請確認任務內容已帶入；若沒有，請先按「複製任務單」再貼上。','good')};
+$('clear').onclick=()=>{if(!confirm('確定清空所有欄位並重設進度？已儲存的版本不會被刪除。'))return;ids.forEach(id=>{if(id!=='redlines')$(id).value=''});$('preview').textContent=PLACE;P={copied:false,approved:false,checked:false,accepted:false,used:{}};saveP();wasS1=false;render();notice('表單已清空、進度已重設；已儲存的內容仍保留。')};
+$('restart').onclick=()=>{P={copied:false,approved:false,checked:false,accepted:false,used:{}};saveP();render();notice('進度已重設，表單內容保留。可以修改後產生下一份任務單。');$('card-spec').scrollIntoView({behavior:'smooth',block:'start'});};
+render();
+</script>
+</body>
+</html>
